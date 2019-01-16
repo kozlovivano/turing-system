@@ -11,20 +11,20 @@ import { ErrorComponent } from './components/error/error.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './modules/material/material.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ErrorComponent,
-    HeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MaterialModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		ErrorComponent,
+		HeaderComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+		MaterialModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
