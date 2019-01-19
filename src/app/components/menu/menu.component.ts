@@ -16,8 +16,8 @@ export class MenuComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private global: GlobalService,
-		private locale: LocaleService,
+		public global: GlobalService,
+		public locale: LocaleService,
 		private location: Location,
 		private http: HttpService
 	) { }
