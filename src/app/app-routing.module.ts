@@ -19,6 +19,10 @@ const routes: Routes = [
 		component: ShowroomComponent
 	},
 	{
+		path: 'showroom/:detail',
+		component: ShowroomComponent
+	},
+	{
 		path: 'aboutus',
 		component: AboutusComponent
 	},

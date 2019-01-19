@@ -1,5 +1,15 @@
 <div class="menu">
-    <div class="menu-item" *ngFor="let menu of menus" matRipple (click)="onMenu(menu.link)">
-        <h2 [class.white]="!global.colorToggle">{{ menu.name }}</h2>
+    <div class="menu-item" matRipple (click)="onMenu(menuData[0])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[0] }}</h2>
+    </div>
+    <div class="menu-item" matRipple (click)="onMenu(menuData[1])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[1] }}</h2>
+    </div>
+    <div class="menu-item" matRipple (click)="onMenu(menuData[2])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[2] }}</h2>
+    </div>
+    <div class="locale" matRipple>
+        <img src="/assets/png/uk.png" alt="My language is English" width="60" (click)="localeEn()">
+        <img src="/assets/png/fr.png" alt="My language is French" width="60" (click)="localeFr()">
     </div>
 </div>

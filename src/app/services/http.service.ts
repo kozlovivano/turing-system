@@ -18,6 +18,10 @@ export class HttpService {
         return this.http.get("./assets/data/home/" + this.locale.locale + ".home.json");
     }
 
+	public getMenuData(): Observable<any>{
+        return this.http.get("./assets/data/menu/" + this.locale.locale + ".menu.json");
+    }
+
 	public getContactData(): Observable<any>{
 		return this.http.get("./assets/data/contact/" + this.locale.locale + ".contact.json");
 	}

@@ -19,6 +19,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CircleComponent } from './components/circle/circle.component';
 import { TuringSystemComponent } from './components/aboutus/turing-system/turing-system.component';
 import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/arsac-consulting.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
