@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { GlobalService } from '../../services/global.service';
 @Component({
 	selector: 'app-error',
 	templateUrl: './error.component.html',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-	constructor() { }
+	constructor(
+		public global: GlobalService,
+		public router: Router
+	) { }
 
 	ngOnInit() {
+		this.global.headerToggle = false;
 	}
 
+	onHome(){
+		this.global.headerToggle = true;
+		this.router.navigate(['/']);
+	}
 }
