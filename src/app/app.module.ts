@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +38,9 @@ import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-		MaterialModule
+		MaterialModule,
+		HttpClientModule,
+		MarkdownModule.forRoot({ loader: HttpClientModule }),
 	],
 	providers: [],
 	bootstrap: [AppComponent]

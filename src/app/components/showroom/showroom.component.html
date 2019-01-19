@@ -1,13 +1,15 @@
 
-<div class="showroom">
+<div class="showroom" *ngIf="!global.menuToggle">
     <div class="intro">
         <h1>Showroom</h1>
         <p>Some selected works and elements that can help you evaluate our know-how.</p>
     </div>
-    <div class="item" *ngFor="let item of shows">
-        <a href="#"><img src="{{ item.img }}" width="297" height="297"></a>
-        <h2 class="caption">
-            {{ item.caption }}
-        </h2>
+    <div class="item" *ngFor="let item of showroomData">
+        <a href="/assets/data/md/{{ locale.locale + item.url }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
+        <a href="/assets/data/md/{{ locale.locale + item.url }}" class="black">
+            <h2 class="caption">
+                {{ item.title }}
+            </h2>
+        </a>
     </div>
 </div>

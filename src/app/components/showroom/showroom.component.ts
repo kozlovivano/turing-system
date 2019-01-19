@@ -1,25 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Show } from '../../classes/show';
+import { Showroom } from '../../classes/showroom';
 import { GlobalService } from '../../services/global.service';
+import { HttpService } from '../../services/http.service';
+import { LocaleService } from '../../services/locale.service';
+import { Observable } from 'rxjs';
 @Component({
-  selector: 'app-showroom',
-  templateUrl: './showroom.component.html',
-  styleUrls: ['./showroom.component.sass']
+	selector: 'app-showroom',
+	templateUrl: './showroom.component.html',
+	styleUrls: ['./showroom.component.sass']
 })
 export class ShowroomComponent implements OnInit {
 
+	public showroomData;
 
-  public shows: Show[] = [
-    { id: 1, caption: 'The great process for great result', img: 'https://storage.moqups.com/repo/xJzw4EJ2/6abbOSci08.jpg' },
-    { id: 2, caption: 'The guid', img: 'https://storage.moqups.com/repo/xJzw4EJ2/578YnA4I4K.jpg' },
-  ]
+	constructor(
+		public global: GlobalService,
+		private http: HttpService,
+		public locale: LocaleService
+	) { }
 
-  constructor(
-    public global: GlobalService,
-  ) { }
-
-  ngOnInit() {
-    this.global.colorToggle = true;
-  }
-
+	ngOnInit() {
+		this.global.colorToggle = true;
+		this.getShowroomData();
+	}
+	getShowroomData(){
+		return this.http.getShowroomData().subscribe(
+			data => this.setShowroomData(data)
+		);
+	}
+	setShowroomData(data){
+		this.showroomData = data;
+	}
 }
