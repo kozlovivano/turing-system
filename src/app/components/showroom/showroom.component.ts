@@ -16,6 +16,8 @@ export class ShowroomComponent implements OnInit {
 	public showroomDetail;
 	public showDetail: Boolean = false;
 
+	public title: string;
+	public text: string;
 	constructor(
 		public global: GlobalService,
 		private http: HttpService,
@@ -25,7 +27,9 @@ export class ShowroomComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.global.menuAlive = false;
 		this.global.colorToggle = true;
+		this.global.signalShowroom = true;
 		this.getShowroomData();
 		this.sub = this.route.params.subscribe(params => {
 			this.showroomDetail = params.detail
@@ -38,6 +42,8 @@ export class ShowroomComponent implements OnInit {
 		);
 	}
 	setShowroomData(data){
-		this.showroomData = data;
+		this.title = data['title'];
+		this.text = data['explain-text'];
+		this.showroomData = data.items;
 	}
 }

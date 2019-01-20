@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit() {
 		this.global.colorToggle = false;
+		this.global.menuAlive = false;
 		this.getHomeData();
+		this.global.signalShowroom = false;
 	}
 
 	getHomeData(){

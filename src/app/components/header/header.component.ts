@@ -8,19 +8,30 @@ import { GlobalService } from '../../services/global.service';
 })
 export class HeaderComponent implements OnInit {
 
+	private uri: string;
+
 	constructor(
 		public global: GlobalService,
 		public router: Router
-	) { }
+	) {
 
+	}
 	ngOnInit() {
 	}
 
-	onMenu(){
+	onMenu() {
 		this.global.menuToggle = !this.global.menuToggle;
+		this.global.colorToggle = false;
+		if(this.global.menuAlive){
+			this.global.menuAlive = false;
+			if(this.global.signalShowroom){
+				this.global.colorToggle = true;
+			}
+		}
+
 	}
 
-	onHome(){
+	onHome() {
 		this.router.navigate(['/']);
 		this.global.menuToggle = false;
 	}

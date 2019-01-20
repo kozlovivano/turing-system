@@ -19,6 +19,8 @@ export class ContactComponent implements OnInit {
 	ngOnInit() {
 		this.global.colorToggle = false;
         this.getContactData();
+		this.global.signalShowroom = false;
+		this.global.menuAlive = false;
 	}
     getContactData(){
 		return this.http.getContactData().subscribe(

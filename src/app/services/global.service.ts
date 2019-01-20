@@ -9,5 +9,7 @@ export class GlobalService {
 	public colorToggle: Boolean = false; // For showroom color toggle
 	public url: string = "http://cdn.dev.turing-system.com/turing-system/";
 	public cookieSet: Boolean = false;
+	public signalShowroom: Boolean = false;
+	public menuAlive: Boolean = false;
 	constructor() { }
 }

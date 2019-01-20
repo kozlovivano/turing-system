@@ -1,7 +1,7 @@
 <div class="showroom" *ngIf="!global.menuToggle && !showDetail">
     <div class="intro">
-        <h1>Showroom</h1>
-        <p>Some selected works and elements that can help you evaluate our know-how.</p>
+        <h1>{{title}}</h1>
+        <p>{{text}}</p>
     </div>
     <div class="item" *ngFor="let item of showroomData" >
         <a routerLink="{{ item.url }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>

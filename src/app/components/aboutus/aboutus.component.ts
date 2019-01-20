@@ -14,6 +14,8 @@ export class AboutusComponent implements OnInit {
 	ngOnInit() {
 		this.global.colorToggle = false;
 		this.global.headerToggle = true;
+		this.global.signalShowroom = false;
+		this.global.menuAlive = false;
 	}
 
 }

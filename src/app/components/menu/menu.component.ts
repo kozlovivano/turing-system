@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit {
 	ngOnInit() {
 		this.getMenuData();
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
+		this.global.menuAlive = true;
 	}
 
 	getMenuData(){
@@ -46,6 +47,12 @@ export class MenuComponent implements OnInit {
 	onMenu(link){
 		this.global.menuToggle = false;
 		this.router.navigate([link.toLowerCase().replace(/ /g,'')]);
+		if(this.global.menuAlive){
+			this.global.menuAlive = false;
+			if(this.global.signalShowroom){
+				this.global.colorToggle = true;
+			}
+		}
 	}
 
 	localeChange(lc){
