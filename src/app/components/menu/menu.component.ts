@@ -5,6 +5,7 @@ import { LocaleService } from '../../services/locale.service';
 import { Location } from '@angular/common';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
 	selector: 'app-menu',
 	templateUrl: './menu.component.html',
@@ -21,7 +22,8 @@ export class MenuComponent implements OnInit {
 		public global: GlobalService,
 		public locale: LocaleService,
 		private location: Location,
-		private http: HttpService
+		private http: HttpService,
+		private cookieService: CookieService
 	) { }
 
 	ngOnInit() {
@@ -49,5 +51,7 @@ export class MenuComponent implements OnInit {
 	localeChange(lc){
 		this.locale.locale = lc;
 		this.global.menuToggle = false;
+		this.cookieService.set("turing-system-locale", lc);
+		window.location.assign('/');
 	}
 }

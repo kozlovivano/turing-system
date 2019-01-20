@@ -18,7 +18,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CircleComponent } from './components/circle/circle.component';
 import { TuringSystemComponent } from './components/aboutus/turing-system/turing-system.component';
 import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/arsac-consulting.component';
-
+import { CookieService } from 'ngx-cookie-service';
+import { CookieComponent } from './components/cookie/cookie.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -31,7 +32,8 @@ import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/
 		ContactComponent,
 		CircleComponent,
 		TuringSystemComponent,
-		ArsacConsultingComponent
+		ArsacConsultingComponent,
+		CookieComponent
 	],
 	imports: [
 		BrowserModule,
@@ -42,7 +44,7 @@ import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/
 		HttpClientModule,
 		MarkdownModule.forRoot({ loader: HttpClientModule }),
 	],
-	providers: [],
+	providers: [CookieService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
