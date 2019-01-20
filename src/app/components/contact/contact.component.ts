@@ -14,7 +14,12 @@ export class ContactComponent implements OnInit {
 	constructor(
 		public global: GlobalService,
 		private http: HttpService
-	) { }
+	) {
+		this.global.localeWatch.subscribe(value => {
+			this.contactData = [];
+			this.ngOnInit();
+		})
+	}
 
 	ngOnInit() {
 		this.global.colorToggle = false;

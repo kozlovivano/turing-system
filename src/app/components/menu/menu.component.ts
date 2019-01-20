@@ -24,12 +24,18 @@ export class MenuComponent implements OnInit {
 		private location: Location,
 		private http: HttpService,
 		private cookieService: CookieService
-	) { }
+	) {
+		this.global.localeWatch.subscribe(value => {
+			this.menuData = [];
+			this.ngOnInit();
+		})
+	}
 
 	ngOnInit() {
 		this.getMenuData();
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
 		this.global.menuAlive = true;
+		this.global.colorToggle = false;
 	}
 
 	getMenuData(){
@@ -57,8 +63,7 @@ export class MenuComponent implements OnInit {
 
 	localeChange(lc){
 		this.locale.locale = lc;
-		this.global.menuToggle = false;
 		this.cookieService.set("turing-system-locale", lc);
-		window.location.assign('/');
+		this.global.emitLocaleChange(true);
 	}
 }

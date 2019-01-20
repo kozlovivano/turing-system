@@ -24,7 +24,14 @@ export class ShowroomComponent implements OnInit {
 		public locale: LocaleService,
 		private router: Router,
 		private route: ActivatedRoute,
-	) { }
+	) {
+		this.global.localeWatch.subscribe(value => {
+			this.title = "";
+			this.text = "";
+			this.showroomData = [];
+			this.ngOnInit();
+		})
+	}
 
 	ngOnInit() {
 		this.global.menuAlive = false;

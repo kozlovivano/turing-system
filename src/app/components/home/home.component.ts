@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../services/global.service';
+import { LocaleService } from '../../services/locale.service';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 @Component({
@@ -14,8 +15,14 @@ export class HomeComponent implements OnInit {
 
 	constructor(
 		public global: GlobalService,
-		private http: HttpService
-	) { }
+		private http: HttpService,
+		public locale: LocaleService
+	) {
+		this.global.localeWatch.subscribe(value => {
+			this.homeData = [];
+			this.ngOnInit();
+		})
+	}
 
 	ngOnInit() {
 		this.global.colorToggle = false;
