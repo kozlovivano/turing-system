@@ -48,5 +48,6 @@ export class MenuComponent implements OnInit {
 
 	localeChange(lc){
 		this.locale.locale = lc;
+		this.global.menuToggle = false;
 	}
 }
