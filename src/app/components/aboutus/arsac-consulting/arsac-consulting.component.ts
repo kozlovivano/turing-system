@@ -8,11 +8,14 @@ import { LocaleService } from '../../../services/locale.service';
 })
 export class ArsacConsultingComponent implements OnInit {
 
+	public mdSrc: string;
+
 	constructor(
 		public global: GlobalService,
 		public locale: LocaleService
 	) { }
 
 	ngOnInit() {
+		this.mdSrc = this.global.url + this.locale.locale + '.about-us.arsac-consulting.md';
 	}
 }

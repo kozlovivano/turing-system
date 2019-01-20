@@ -8,12 +8,15 @@ import { LocaleService } from '../../../services/locale.service';
 })
 export class TuringSystemComponent implements OnInit {
 
+	public mdSrc: string;
+
 	constructor(
 		public global: GlobalService,
 		public locale: LocaleService
 	) { }
 
 	ngOnInit() {
+		this.mdSrc = this.global.url + this.locale.locale + '.about-us.turing-system.md';
 	}
 
 }

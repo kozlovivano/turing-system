@@ -13,5 +13,5 @@
     </div>
 </div>
 <div *ngIf="!global.menuToggle && showDetail" class="markdown">
-    <p markdown src="assets/data/md/{{ locale.locale }}/showroom/{{ showroomDetail }}.md"></p>
+    <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
 </div>

@@ -14,6 +14,8 @@ export class MenuComponent implements OnInit {
 
 	public menuData = [];
 
+	public lc: string;
+
 	constructor(
 		private router: Router,
 		public global: GlobalService,
@@ -24,6 +26,7 @@ export class MenuComponent implements OnInit {
 
 	ngOnInit() {
 		this.getMenuData();
+		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
 	}
 
 	getMenuData(){
@@ -43,10 +46,7 @@ export class MenuComponent implements OnInit {
 		this.router.navigate([link.toLowerCase().replace(/ /g,'')]);
 	}
 
-	localeEn(){
-		this.locale.locale = 'en';
-	}
-	localeFr(){
-		this.locale.locale = 'fr';
+	localeChange(lc){
+		this.locale.locale = lc;
 	}
 }

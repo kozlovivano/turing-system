@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
 
+	public url: string = "http://cdn.dev.turing-system.com/turing-system/";
+
 	constructor(
 		private http: HttpClient,
         private locale: LocaleService
@@ -15,18 +17,18 @@ export class HttpService {
     }
 
     public getHomeData(): Observable<any>{
-        return this.http.get("./assets/data/home/" + this.locale.locale + ".home.json");
+        return this.http.get(this.url + this.locale.locale + ".home.json");
     }
 
 	public getMenuData(): Observable<any>{
-        return this.http.get("./assets/data/menu/" + this.locale.locale + ".menu.json");
+        return this.http.get(this.url + this.locale.locale + ".menu.json");
     }
 
 	public getContactData(): Observable<any>{
-		return this.http.get("./assets/data/contact/" + this.locale.locale + ".contact.json");
+		return this.http.get(this.url + this.locale.locale + ".contact.json");
 	}
 
 	public getShowroomData(): Observable<any>{
-		return this.http.get("./assets/data/showroom/" + this.locale.locale + ".showroom.json");
+		return this.http.get(this.url + this.locale.locale + ".showroom.json");
 	}
 }

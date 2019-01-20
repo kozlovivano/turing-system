@@ -9,7 +9,7 @@
         <h2 [class.white]="!global.colorToggle">{{ menuData[2] }}</h2>
     </div>
     <div class="locale" matRipple>
-        <img src="/assets/png/uk.png" alt="My language is English" width="60" (click)="localeEn()">
-        <img src="/assets/png/fr.png" alt="My language is French" width="60" (click)="localeFr()">
+        <span>{{ menuData[3] }}</span>
+        <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
     </div>
 </div>
