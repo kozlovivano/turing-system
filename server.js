@@ -9,7 +9,7 @@ app.use(express.static('./dist/turing-system'));
 
 app.get('/*', function(req,res) {
 
-res.sendFile(path.join(__dirname,'/dist/your_app_name/index.html'));
+res.sendFile(path.join(__dirname,'/dist/turing-system/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
