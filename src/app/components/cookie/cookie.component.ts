@@ -19,7 +19,7 @@ export class CookieComponent implements OnInit {
 
 	ngOnInit() {
         this.isSetCookie = (this.cookieService.get("turing-system-cookie-policy") == "agreed") ? true : false;
-        if(this.isSetCookie){
+		if(this.cookieService.get("turing-system-locale") != ""){
 			this.locale.locale = this.cookieService.get("turing-system-locale");
 		}
 	}
