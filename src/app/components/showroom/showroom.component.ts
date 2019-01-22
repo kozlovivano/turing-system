@@ -4,10 +4,32 @@ import { HttpService } from '../../services/http.service';
 import { LocaleService } from '../../services/locale.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
+const query = (s,a,o={optional:true})=>q(s,a,o);
 @Component({
 	selector: 'app-showroom',
 	templateUrl: './showroom.component.html',
-	styleUrls: ['./showroom.component.sass']
+	styleUrls: ['./showroom.component.sass'],
+	animations: [
+		trigger('showroomTransition', [
+			transition(':enter', [
+				query('.intro', style({transform: 'translateX(20px)', opacity: '0'})),
+				query('.item', style({ opacity: '0'})),
+				query('.intro', animate('1s ease-in'), style({ transform: 'translateX(0px)', opacity: '1'})),
+				query('.item', stagger(600, [
+					style({transform: 'translateY(100px)', opacity: '0' }),
+					animate('3s ease-in', style({transform: 'translateY(0px)', opacity: '1'}))
+				])),
+			]),
+			transition(':leave', [
+				query('.intro', animate('1s ease-in', style({opacity: '0'}))),
+				query('.item', stagger(600, [
+					style({transform: 'translateY(0px)', opacity: '1' }),
+					animate('1s ease-in', style({transform: 'translateY(0px)', opacity: '0'}))
+				])),
+			])
+		])
+	]
 })
 export class ShowroomComponent implements OnInit {
 
@@ -52,5 +74,9 @@ export class ShowroomComponent implements OnInit {
 		this.title = data['title'];
 		this.text = data['explain-text'];
 		this.showroomData = data.items;
+	}
+
+	animDone(){
+		console.log('done');
 	}
 }

@@ -14,10 +14,14 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
 		trigger('homeTransition', [
 			transition(':enter', [
 				query('.circle', style({transform: 'scale(0.01)'})),
-				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'})))
+				query('.content', style({transform: 'translateY(10px)', opacity: 0})),
+				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
+				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)'), style({transform: 'translateY(0px)', opacity: 1}))
 			]),
 			transition(':leave', [
+				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
 				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
+
 			])
 		])
     ]
@@ -58,6 +62,11 @@ export class HomeComponent implements OnInit {
 	animDone(){
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
+		}
+		if(this.global.routerToggle){
+			this.global.routerToggle = false;
+			this.global.bodyToggle = true;
+			this.global.menuToggle = false;
 		}
 	}
 }

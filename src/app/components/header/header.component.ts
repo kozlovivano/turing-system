@@ -19,16 +19,13 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onMenu() {
-		//this.global.menuToggle = !this.global.menuToggle;
-
+	onMenuClick() {
 		if(this.global.bodyToggle){
 			this.global.bodyToggle = false;
 		}
 		if(this.global.menuToggle){
 			this.global.menuToggle = false;
 		}
-
 		this.global.colorToggle = false;
 		if(this.global.menuAlive){
 			this.global.menuAlive = false;
@@ -36,11 +33,13 @@ export class HeaderComponent implements OnInit {
 				this.global.colorToggle = true;
 			}
 		}
-
 	}
-
 	onHome() {
-		this.router.navigate(['/']);
-		this.global.menuToggle = false;
+		if(this.global.menuToggle){
+			this.global.menuToggle = false;
+		}else{
+			this.global.bodyToggle = false;
+			this.global.routerToggle = true;
+		}
 	}
 }

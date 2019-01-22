@@ -1,4 +1,4 @@
-<div class="showroom" *ngIf="!showDetail">
+<div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()">
     <div class="intro">
         <h1>{{title}}</h1>
         <p>{{text}}</p>
@@ -12,6 +12,6 @@
         </a>
     </div>
 </div>
-<div *ngIf="showDetail" class="markdown">
+<div *ngIf="showDetail && global.bodyToggle" class="markdown">
     <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
 </div>

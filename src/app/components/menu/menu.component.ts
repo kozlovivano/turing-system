@@ -96,5 +96,6 @@ export class MenuComponent implements OnInit {
 		if(!this.global.menuToggle){
 			this.global.bodyToggle = true;
 		}
+		console.log(this.global.signalShowroom);
 	}
 }
