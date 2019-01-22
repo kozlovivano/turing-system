@@ -39,7 +39,7 @@ export class TuringSystemComponent implements OnInit {
 	}
 
 	animDone(){
-		if(!this.global.bodyToggle){
+		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
 		}
 	}
