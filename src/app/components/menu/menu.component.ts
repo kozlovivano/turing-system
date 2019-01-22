@@ -33,7 +33,8 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
 		])
 	],
 	host: {
-		'[@menuTransition]': ''
+		'[@menuTransition]': '',
+		'(@menuTransition.done)': 'animDone()'
 	}
 })
 export class MenuComponent implements OnInit {
@@ -91,7 +92,9 @@ export class MenuComponent implements OnInit {
 		this.global.emitLocaleChange(true);
 	}
 
-	animDone(e){
-		console.log(e);
+	animDone(){
+		if(!this.global.menuToggle){
+			this.global.bodyToggle = true;
+		}
 	}
 }

@@ -20,7 +20,15 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onMenu() {
-		this.global.menuToggle = !this.global.menuToggle;
+		//this.global.menuToggle = !this.global.menuToggle;
+
+		if(this.global.bodyToggle){
+			this.global.bodyToggle = false;
+		}
+		if(this.global.menuToggle){
+			this.global.menuToggle = false;
+		}
+
 		this.global.colorToggle = false;
 		if(this.global.menuAlive){
 			this.global.menuAlive = false;

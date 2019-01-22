@@ -36,4 +36,10 @@ export class ArsacConsultingComponent implements OnInit {
 	ngOnInit() {
 		this.mdSrc = this.global.url + this.locale.locale + '.about-us.arsac-consulting.md';
 	}
+
+	animDone(){
+		if(!this.global.bodyToggle){
+			this.global.menuToggle = true;
+		}
+	}
 }

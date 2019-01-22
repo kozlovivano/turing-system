@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="!global.menuToggle" [@turingTransition]>
+<div class="wrapper" *ngIf="global.bodyToggle" [@turingTransition] (@turingTransition.done)="animDone()">
     <div class="circle-content">
         <div class="circle _purple"></div>
         <div class="circle _yellow"></div>

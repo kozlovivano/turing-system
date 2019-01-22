@@ -51,4 +51,10 @@ export class ContactComponent implements OnInit {
 			this.contactData.push(data[i]);
 		}
 	}
+
+	animDone(){
+		if(!this.global.bodyToggle){
+			this.global.menuToggle = true;
+		}
+	}
 }

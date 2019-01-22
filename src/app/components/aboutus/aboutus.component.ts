@@ -31,4 +31,9 @@ export class AboutusComponent implements OnInit {
 		this.global.menuAlive = false;
 	}
 
+	animDone(){
+		if(!this.global.bodyToggle){
+			this.global.menuToggle = true;
+		}
+	}
 }

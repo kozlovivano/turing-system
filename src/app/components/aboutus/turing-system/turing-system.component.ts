@@ -38,4 +38,9 @@ export class TuringSystemComponent implements OnInit {
 		this.mdSrc = this.global.url + this.locale.locale + '.about-us.turing-system.md';
 	}
 
+	animDone(){
+		if(!this.global.bodyToggle){
+			this.global.menuToggle = true;
+		}
+	}
 }

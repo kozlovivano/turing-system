@@ -56,6 +56,8 @@ export class HomeComponent implements OnInit {
 		}
 	}
 	animDone(){
-		console.log("done");
+		if(!this.global.bodyToggle){
+			this.global.menuToggle = true;
+		}
 	}
 }

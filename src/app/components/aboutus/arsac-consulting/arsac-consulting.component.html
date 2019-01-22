@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="!global.menuToggle" [@arsacTransition]>
+<div class="wrapper" *ngIf="global.bodyToggle" [@arsacTransition] (@arsacTransition.done)="animDone()">
     <div class="circle-content">
         <div class="circle _purple"></div>
         <div class="circle _yellow"></div>
