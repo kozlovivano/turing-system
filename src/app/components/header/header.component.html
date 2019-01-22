@@ -11,3 +11,18 @@
         </mat-toolbar-row>
     </mat-toolbar>
 </div>
+<div class="menu" *ngIf="global.menuToggle" [@menuTransition] (@menuTransition.done)="animDone()">
+    <div class="menu-item" matRipple (click)="onMenu(menuData[0])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[0] }}</h2>
+    </div>
+    <div class="menu-item" matRipple (click)="onMenu(menuData[1])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[1] }}</h2>
+    </div>
+    <div class="menu-item" matRipple (click)="onMenu(menuData[2])">
+        <h2 [class.white]="!global.colorToggle">{{ menuData[2] }}</h2>
+    </div>
+    <div class="locale">
+        <span [class.white]="!global.colorToggle">{{ menuData[3] }}</span>
+        <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
+    </div>
+</div>

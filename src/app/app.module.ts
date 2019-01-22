@@ -11,11 +11,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './modules/material/material.module';
-import { MenuComponent } from './components/menu/menu.component';
 import { ShowroomComponent } from './components/showroom/showroom.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CircleComponent } from './components/circle/circle.component';
 import { TuringSystemComponent } from './components/aboutus/turing-system/turing-system.component';
 import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/arsac-consulting.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -26,11 +24,9 @@ import { CookieComponent } from './components/cookie/cookie.component';
 		HomeComponent,
 		ErrorComponent,
 		HeaderComponent,
-		MenuComponent,
 		ShowroomComponent,
 		AboutusComponent,
 		ContactComponent,
-		CircleComponent,
 		TuringSystemComponent,
 		ArsacConsultingComponent,
 		CookieComponent
