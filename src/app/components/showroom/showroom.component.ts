@@ -4,8 +4,7 @@ import { HttpService } from '../../services/http.service';
 import { LocaleService } from '../../services/locale.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
-const query = (s,a,o={optional:true})=>q(s,a,o);
+import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
 @Component({
 	selector: 'app-showroom',
 	templateUrl: './showroom.component.html',
@@ -14,19 +13,19 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
 		trigger('showroomTransition', [
 			transition(':enter', [
 				query('.intro', style({transform: 'translateX(20px)', opacity: '0'})),
-				query('.item', style({ opacity: '0'})),
-				query('.intro', animate('1s ease-in'), style({ transform: 'translateX(0px)', opacity: '1'})),
+				query('.item', style({ opacity: '0'}), { optional: true }),
+				query('.intro', animate('1s ease-in', style({ transform: 'translateX(0px)', opacity: '1'}))),
 				query('.item', stagger(600, [
 					style({transform: 'translateY(100px)', opacity: '0' }),
 					animate('3s ease-in', style({transform: 'translateY(0px)', opacity: '1'}))
-				])),
+				]), { optional: true }),
 			]),
 			transition(':leave', [
 				query('.intro', animate('1s ease-in', style({opacity: '0'}))),
 				query('.item', stagger(600, [
 					style({transform: 'translateY(0px)', opacity: '1' }),
 					animate('1s ease-in', style({transform: 'translateY(0px)', opacity: '0'}))
-				])),
+				]), { optional: true }),
 			])
 		])
 	]
@@ -77,6 +76,13 @@ export class ShowroomComponent implements OnInit {
 	}
 
 	animDone(){
-		console.log('done');
+		if(!this.global.bodyToggle && !this.global.menuToggle){
+			this.global.menuToggle = true;
+		}
+		if(this.global.routerToggle){
+			this.router.navigate(['/']);
+			this.global.menuToggle = false;
+			this.global.bodyToggle = true;
+		}
 	}
 }

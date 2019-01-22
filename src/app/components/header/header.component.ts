@@ -6,8 +6,7 @@ import { Location } from '@angular/common';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
-const query = (s,a,o={optional:true})=>q(s,a,o);
+import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -37,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
 	private uri: string;
 	public menuData = [];
-
+	private link: string = "";
 	public lc: string;
 	constructor(
 		private router: Router,
@@ -66,7 +65,6 @@ export class HeaderComponent implements OnInit {
 		if(this.global.menuToggle){
 			this.global.menuToggle = false;
 		}
-		this.global.colorToggle = false;
 		if(this.global.menuAlive){
 			this.global.menuAlive = false;
 			if(this.global.signalShowroom){
@@ -95,8 +93,8 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onMenu(link){
+		this.link = link;
 		this.global.menuToggle = false;
-		this.router.navigate([link.toLowerCase().replace(/ /g,'')]);
 		if(this.global.menuAlive){
 			this.global.menuAlive = false;
 			if(this.global.signalShowroom){
@@ -112,9 +110,17 @@ export class HeaderComponent implements OnInit {
 	}
 
 	animDone(){
-		if(!this.global.menuToggle){
-			this.global.bodyToggle = true;
+		if(this.global.colorToggle){
+			this.global.colorToggle = false;
 		}
-		console.log(this.global.signalShowroom);
+		if(this.link != ""){
+			this.router.navigate([this.link.toLowerCase().replace(/ /g,'')]);
+			this.link = "";
+			this.global.bodyToggle = true;
+		}else{
+			if(!this.global.menuToggle){
+				this.global.bodyToggle = true;
+			}
+		}
 	}
 }

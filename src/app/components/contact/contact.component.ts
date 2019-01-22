@@ -3,8 +3,7 @@ import { GlobalService } from '../../services/global.service';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
-const query = (s,a,o={optional:true})=>q(s,a,o);
+import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
 @Component({
 	selector: 'app-contact',
 	templateUrl: './contact.component.html',
@@ -15,7 +14,7 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
 				query('.circle', style({transform: 'scale(0.01)'})),
 				query('.content', style({transform: 'translateY(10px)', opacity: 0})),
 				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
-				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)'), style({transform: 'translateY(0px)', opacity: 1}))
+				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1})))
 			]),
 			transition(':leave', [
 				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
