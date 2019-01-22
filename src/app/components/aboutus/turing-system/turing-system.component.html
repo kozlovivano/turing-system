@@ -1,5 +1,9 @@
-<div class="wrapper" *ngIf="!global.menuToggle">
-    <app-circle></app-circle>
+<div class="wrapper" *ngIf="!global.menuToggle" [@turingTransition]>
+    <div class="circle-content">
+        <div class="circle _purple"></div>
+        <div class="circle _yellow"></div>
+        <div class="circle _white"></div>
+    </div>
     <div class="content">
         <div class="avatar">
             <img src="https://storage.moqups.com/repo/xJzw4EJ2/XUCIE5v4Hx.jpg" width="141" height="131" align="right">

@@ -1,5 +1,6 @@
 <div [class.background]="!global.colorToggle">
     <app-header></app-header>
+    <app-menu *ngIf="global.menuToggle"></app-menu>
     <router-outlet></router-outlet>
     <app-cookie></app-cookie>
 </div>

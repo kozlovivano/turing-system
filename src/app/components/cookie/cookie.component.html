@@ -1,4 +1,4 @@
-<div class="cookie" *ngIf="!isSetCookie">
+<div class="cookie" *ngIf="!isSetCookie" [@appear]>
     <span>This site uses cookies.</span>
     <button (click)="onOk()">OK</button>
 </div>

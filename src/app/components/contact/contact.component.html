@@ -1,5 +1,9 @@
-<div class="wrapper" *ngIf="!global.menuToggle">
-    <app-circle></app-circle>
+<div class="wrapper" *ngIf="!global.menuToggle" [@contactTransition]>
+    <div class="circle-content">
+        <div class="circle _purple"></div>
+        <div class="circle _yellow"></div>
+        <div class="circle _white"></div>
+    </div>
     <div class="content">
         <h2>{{ contactData[0] }}</h2>
         <p>{{ contactData[1] }}</p>

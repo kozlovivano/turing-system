@@ -1,5 +1,9 @@
-<div class="wrapper" *ngIf="!global.menuToggle">
-    <app-circle></app-circle>
+<div class="wrapper" *ngIf="!global.menuToggle" [@aboutusTransition]>
+    <div class="circle-content">
+        <div class="circle _purple"></div>
+        <div class="circle _yellow"></div>
+        <div class="circle _white"></div>
+    </div>
     <div class="content">
         <div class="turing-system">
             <h2 routerLink="/aboutus/turing-system">Turing System</h2>

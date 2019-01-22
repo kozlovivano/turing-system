@@ -6,10 +6,35 @@ import { Location } from '@angular/common';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
+const query = (s,a,o={optional:true})=>q(s,a,o);
 @Component({
 	selector: 'app-menu',
 	templateUrl: './menu.component.html',
-	styleUrls: ['./menu.component.sass']
+	styleUrls: ['./menu.component.sass'],
+	animations: [
+		trigger('menuTransition', [
+			transition(':enter', [
+				query('.menu-item', style({opacity: 0})),
+				query('.locale', style({opacity: 0, transform: 'translateX(100px)'})),
+				query('.menu-item', stagger(300, [
+					style({transform: 'translateY(100px)' }),
+					animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))
+				])),
+				query('.locale', animate('.6s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 1, transform: 'translateX(0px)'})))
+			]),
+			transition(':leave', [
+				query('.menu-item', stagger(300, [
+					style({transform: 'translateY(0px)', opacity: 1 }),
+					animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 0}))
+				])),
+				query('.locale', animate('.6s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0})))
+			])
+		])
+	],
+	host: {
+		'[@menuTransition]': ''
+	}
 })
 export class MenuComponent implements OnInit {
 
@@ -37,7 +62,6 @@ export class MenuComponent implements OnInit {
 		this.global.menuAlive = true;
 		this.global.colorToggle = false;
 	}
-
 	getMenuData(){
 		return this.http.getMenuData().subscribe(
 			data => this.setMenuData(data)
@@ -65,5 +89,9 @@ export class MenuComponent implements OnInit {
 		this.locale.locale = lc;
 		this.cookieService.set("turing-system-locale", lc);
 		this.global.emitLocaleChange(true);
+	}
+
+	animDone(e){
+		console.log(e);
 	}
 }

@@ -4,10 +4,23 @@ import { GlobalService } from '../../services/global.service';
 import { LocaleService } from '../../services/locale.service';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
+import {trigger, stagger, animate, style, group, query as q, transition, keyframes} from '@angular/animations';
+const query = (s,a,o={optional:true})=>q(s,a,o);
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.sass']
+	styleUrls: ['./home.component.sass'],
+    animations: [
+		trigger('homeTransition', [
+			transition(':enter', [
+				query('.circle', style({transform: 'scale(0.01)'})),
+				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'})))
+			]),
+			transition(':leave', [
+				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
+			])
+		])
+    ]
 })
 export class HomeComponent implements OnInit {
 
@@ -41,5 +54,8 @@ export class HomeComponent implements OnInit {
 		for(var i in data){
 			this.homeData.push(data[i]);
 		}
+	}
+	animDone(){
+		console.log("done");
 	}
 }
