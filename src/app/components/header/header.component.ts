@@ -59,21 +59,23 @@ export class HeaderComponent implements OnInit {
 
 	onMenuClick() {
 		if(!this.global.animProcessing){
-
+			// If the menu is going to be shown
 			if(this.global.bodyToggle){
 				this.global.bodyToggle = false;
 			}
+			// If the body is going to be shown
 			if(this.global.menuToggle){
 				this.global.menuToggle = false;
 			}
-			if(this.global.menuAlive){
-				this.global.menuAlive = false;
-				if(this.global.signalShowroom){
-					this.global.colorToggle = false;
-				}
-			}else{
-				this.global.menuAlive = true;
-			}
+			// If the menu is alive in showroom page.
+			// if(this.global.menuAlive){
+			// 	this.global.menuAlive = false;
+			// 	if(this.global.signalShowroom){
+			// 		this.global.colorToggle = false;
+			// 	}
+			// }else{
+			// 	this.global.menuAlive = true;
+			// }
 		}
 	}
 	onHome() {
