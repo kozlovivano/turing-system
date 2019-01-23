@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
 		this.getMenuData();
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
 		this.global.menuAlive = true;
-		this.global.colorToggle = false;
+		//this.global.colorToggle = false;
 	}
 
 	onMenuClick() {
@@ -110,8 +110,8 @@ export class HeaderComponent implements OnInit {
 	}
 
 	animDone(){
-		if(this.global.colorToggle){
-			this.global.colorToggle = false;
+		if(!this.global.menuToggle && this.global.signalShowroom){
+			this.global.colorToggle = true;
 		}
 		if(this.link != ""){
 			this.router.navigate([this.link.toLowerCase().replace(/ /g,'')]);

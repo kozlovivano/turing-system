@@ -78,6 +78,7 @@ export class ShowroomComponent implements OnInit {
 	animDone(){
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
+			this.global.colorToggle = false;
 		}
 		if(this.global.routerToggle){
 			this.router.navigate(['/']);
