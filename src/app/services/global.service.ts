@@ -16,7 +16,7 @@ export class GlobalService {
 	public cookieSet: Boolean = false;
 	public signalShowroom: Boolean = false;
 	public menuAlive: Boolean = false;
-
+	public headerSticky: Boolean = false;
 	public localeWatch = new Subject<Boolean>();
 
 	public emitLocaleChange(val) {

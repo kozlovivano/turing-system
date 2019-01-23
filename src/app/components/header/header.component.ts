@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
 
 	onMenuClick() {
 		if(!this.global.animProcessing){
+
 			if(this.global.bodyToggle){
 				this.global.bodyToggle = false;
 			}
@@ -68,7 +69,7 @@ export class HeaderComponent implements OnInit {
 			if(this.global.menuAlive){
 				this.global.menuAlive = false;
 				if(this.global.signalShowroom){
-					this.global.colorToggle = true;
+					this.global.colorToggle = false;
 				}
 			}else{
 				this.global.menuAlive = true;

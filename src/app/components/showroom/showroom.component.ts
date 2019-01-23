@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { HttpService } from '../../services/http.service';
 import { LocaleService } from '../../services/locale.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
+import { trigger, stagger, animate, style, group, query, transition, keyframes } from '@angular/animations';
 @Component({
 	selector: 'app-showroom',
 	templateUrl: './showroom.component.html',
@@ -12,29 +12,29 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 	animations: [
 		trigger('showroomTransition', [
 			transition(':enter', [
-				query('.intro', style({transform: 'translateX(20px)', opacity: '0'})),
-				query('.item', style({ opacity: '0'}), { optional: true }),
-				query('.intro', animate('1s ease-in', style({ transform: 'translateX(0px)', opacity: '1'}))),
+				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' })),
+				query('.item', style({ opacity: '0' }), { optional: true }),
+				query('.intro', animate('1s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))),
 				query('.item', stagger(600, [
-					style({transform: 'translateY(100px)', opacity: '0' }),
-					animate('3s ease-in', style({transform: 'translateY(0px)', opacity: '1'}))
+					style({ transform: 'translateY(100px)', opacity: '0' }),
+					animate('3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
 				]), { optional: true }),
 			]),
 			transition(':leave', [
-				query('.intro', animate('1s ease-in', style({opacity: '0'}))),
+				query('.intro', animate('1s ease-in', style({ opacity: '0' }))),
 				query('.item', stagger(600, [
-					style({transform: 'translateY(0px)', opacity: '1' }),
-					animate('1s ease-in', style({transform: 'translateY(0px)', opacity: '0'}))
+					style({ transform: 'translateY(0px)', opacity: '1' }),
+					animate('1s ease-in', style({ transform: 'translateY(0px)', opacity: '0' }))
 				]), { optional: true }),
 			])
 		]),
 		trigger('showroomDetailTransition', [
 			transition(':enter', [
-				query('.markdown', style({opacity: '0'}), { optional: true }),
-				query('.markdown', animate('1s ease-in', style({opacity: '1'})), {optional: true})
+				query('.markdown', style({ opacity: '0' }), { optional: true }),
+				query('.markdown', animate('1s ease-in', style({ opacity: '1' })), { optional: true })
 			]),
 			transition(':leave', [
-				query('.markdown', animate('1s ease-in', style({opacity: '0'})), { optional: true })
+				query('.markdown', animate('1s ease-in', style({ opacity: '0' })), { optional: true })
 			])
 		]),
 	]
@@ -65,9 +65,9 @@ export class ShowroomComponent implements OnInit {
 
 	ngOnInit() {
 		// If menu is activated, the main color is blue, maintained. Otherwise, the showroom color, the white.
-		if(this.global.menuAlive){
+		if (this.global.menuAlive) {
 			this.global.colorToggle = false;
-		}else{
+		} else {
 			this.global.colorToggle = true;
 		}
 
@@ -83,27 +83,39 @@ export class ShowroomComponent implements OnInit {
 		// Check whether detail view.
 		this.showDetail = (this.showroomDetail != undefined) ? true : false;
 	}
-	getShowroomData(){
+	getShowroomData() {
 		return this.http.getShowroomData().subscribe(
 			data => this.setShowroomData(data)
 		);
 	}
-	setShowroomData(data){
+	setShowroomData(data) {
 		this.title = data['title'];
 		this.text = data['explain-text'];
 		this.showroomData = data.items;
 	}
 
-	animDone(){
+	animDone() {
 		this.global.animProcessing = false;
-		if(!this.global.bodyToggle && !this.global.menuToggle){
+		if (!this.global.bodyToggle && !this.global.menuToggle) {
 			this.global.menuToggle = true;
 			this.global.colorToggle = false;
 		}
-		if(this.global.routerToggle){
+		if (this.global.routerToggle) {
 			this.router.navigate(['/']);
 			this.global.menuToggle = false;
 			this.global.bodyToggle = true;
+		}
+	}
+
+	@HostListener('window:scroll', ['$event'])
+	checkScroll() {
+		const scrollPosition = window.pageYOffset;
+		if(scrollPosition > 200){
+			this.global.headerSticky = true;
+			//this.global.colorToggle = false;
+		}else{
+			this.global.headerSticky = false;
+			//this.global.colorToggle = true;
 		}
 	}
 }
