@@ -54,30 +54,35 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 		this.getMenuData();
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
-		this.global.menuAlive = true;
-		//this.global.colorToggle = false;
+		this.global.colorToggle = false;
 	}
 
 	onMenuClick() {
-		if(this.global.bodyToggle){
-			this.global.bodyToggle = false;
-		}
-		if(this.global.menuToggle){
-			this.global.menuToggle = false;
-		}
-		if(this.global.menuAlive){
-			this.global.menuAlive = false;
-			if(this.global.signalShowroom){
-				this.global.colorToggle = true;
+		if(!this.global.animProcessing){
+			if(this.global.bodyToggle){
+				this.global.bodyToggle = false;
+			}
+			if(this.global.menuToggle){
+				this.global.menuToggle = false;
+			}
+			if(this.global.menuAlive){
+				this.global.menuAlive = false;
+				if(this.global.signalShowroom){
+					this.global.colorToggle = true;
+				}
+			}else{
+				this.global.menuAlive = true;
 			}
 		}
 	}
 	onHome() {
-		if(this.global.menuToggle){
-			this.global.menuToggle = false;
-		}else{
-			this.global.bodyToggle = false;
-			this.global.routerToggle = true;
+		if(!this.global.animProcessing){
+			if(this.global.menuToggle){
+				this.global.menuToggle = false;
+			}else{
+				this.global.bodyToggle = false;
+				this.global.routerToggle = true;
+			}
 		}
 	}
 	getMenuData(){
@@ -93,23 +98,29 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onMenu(link){
-		this.link = link;
-		this.global.menuToggle = false;
-		if(this.global.menuAlive){
-			this.global.menuAlive = false;
-			if(this.global.signalShowroom){
-				this.global.colorToggle = true;
+		if(!this.global.animProcessing){
+			this.link = link;
+			this.global.menuToggle = false;
+			if(this.global.menuAlive){
+				this.global.menuAlive = false;
+				if(this.global.signalShowroom){
+					this.global.colorToggle = true;
+				}
 			}
 		}
 	}
 
 	localeChange(lc){
-		this.locale.locale = lc;
-		this.cookieService.set("turing-system-locale", lc);
-		this.global.emitLocaleChange(true);
+		if(!this.global.animProcessing){
+			this.global.menuAlive = true;
+			this.locale.locale = lc;
+			this.cookieService.set("turing-system-locale", lc);
+			this.global.emitLocaleChange(true);
+		}
 	}
 
 	animDone(){
+		this.global.animProcessing = false;
 		if(!this.global.menuToggle && this.global.signalShowroom){
 			this.global.colorToggle = true;
 		}

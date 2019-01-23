@@ -1,4 +1,4 @@
-<div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()">
+<div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()" (@showroomTransition.start)="global.animStart()">
     <div class="intro">
         <h1>{{title}}</h1>
         <p>{{text}}</p>

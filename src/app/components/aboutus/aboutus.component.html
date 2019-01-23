@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="global.bodyToggle" [@aboutusTransition] (@aboutusTransition.done)="animDone()">
+<div class="wrapper" *ngIf="global.bodyToggle" [@aboutusTransition] (@aboutusTransition.done)="animDone()" (@aboutusTransition.start)="global.animStart()">
     <div class="circle-content">
         <div class="circle _purple"></div>
         <div class="circle _yellow"></div>

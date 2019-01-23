@@ -55,13 +55,23 @@ export class ShowroomComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		// If menu is activated, the main color is blue, maintained. Otherwise, the showroom color, the white.
+		if(this.global.menuAlive){
+			this.global.colorToggle = false;
+		}else{
+			this.global.colorToggle = true;
+		}
+
+		// Set menu deactive.
 		this.global.menuAlive = false;
-		this.global.colorToggle = true;
+		// Set showroom visit true.
 		this.global.signalShowroom = true;
+		// Fetch data from 3rd party.
 		this.getShowroomData();
 		this.sub = this.route.params.subscribe(params => {
 			this.showroomDetail = params.detail
 		});
+		// Check whether detail view. 
 		this.showDetail = (this.showroomDetail != undefined) ? true : false;
 	}
 	getShowroomData(){
@@ -76,6 +86,7 @@ export class ShowroomComponent implements OnInit {
 	}
 
 	animDone(){
+		this.global.animProcessing = false;
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
 			this.global.colorToggle = false;

@@ -58,6 +58,7 @@ export class ContactComponent implements OnInit {
 	}
 
 	animDone(){
+		this.global.animProcessing = false;
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
 		}

@@ -39,6 +39,7 @@ export class AboutusComponent implements OnInit {
 	}
 
 	animDone(){
+		this.global.animProcessing = false;
 		if(this.detail){
 			this.router.navigate(['/aboutus/' + this.link]);
 			this.global.menuToggle = false;
@@ -55,8 +56,10 @@ export class AboutusComponent implements OnInit {
 		}
 	}
 	onNavigate(link){
-		this.link = link;
-		this.detail = true;
-		this.global.bodyToggle = false;
+		if(!this.global.animProcessing){
+			this.link = link;
+			this.detail = true;
+			this.global.bodyToggle = false;
+		}
 	}
 }
