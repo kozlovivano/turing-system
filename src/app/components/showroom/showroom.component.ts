@@ -27,7 +27,16 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 					animate('1s ease-in', style({transform: 'translateY(0px)', opacity: '0'}))
 				]), { optional: true }),
 			])
-		])
+		]),
+		trigger('showroomDetailTransition', [
+			transition(':enter', [
+				query('.markdown', style({opacity: '0'})),
+				query('.markdown', animate('1s ease-in', style({opacity: '1'})))
+			]),
+			transition(':leave', [
+				query('.markdown', animate('1s ease-in', style({opacity: '0'})))
+			])
+		]),
 	]
 })
 export class ShowroomComponent implements OnInit {
@@ -71,7 +80,7 @@ export class ShowroomComponent implements OnInit {
 		this.sub = this.route.params.subscribe(params => {
 			this.showroomDetail = params.detail
 		});
-		// Check whether detail view. 
+		// Check whether detail view.
 		this.showDetail = (this.showroomDetail != undefined) ? true : false;
 	}
 	getShowroomData(){
