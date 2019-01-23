@@ -30,11 +30,11 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 		]),
 		trigger('showroomDetailTransition', [
 			transition(':enter', [
-				query('.markdown', style({opacity: '0'})),
-				query('.markdown', animate('1s ease-in', style({opacity: '1'})))
+				query('.markdown', style({opacity: '0'}), { optional: true }),
+				query('.markdown', animate('1s ease-in', style({opacity: '1'})), {optional: true})
 			]),
 			transition(':leave', [
-				query('.markdown', animate('1s ease-in', style({opacity: '0'})))
+				query('.markdown', animate('1s ease-in', style({opacity: '0'})), { optional: true })
 			])
 		]),
 	]

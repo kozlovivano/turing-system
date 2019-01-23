@@ -12,6 +12,6 @@
         </a>
     </div>
 </div>
-<div *ngIf="showDetail && global.bodyToggle" class="markdown">
+<div *ngIf="showDetail && global.bodyToggle" class="markdown" [@showroomDetailTransition] (@showroomDetailTransition.done)="animDone()" (@showroomDetailTransition.start)="global.animStart()">
     <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
 </div>
