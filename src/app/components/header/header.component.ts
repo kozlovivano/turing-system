@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
+import {trigger, stagger, animate, style, group, query, transition, keyframes, state} from '@angular/animations';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -15,20 +15,34 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 		trigger('menuTransition', [
 			transition(':enter', [
 				query('.menu-item', style({opacity: 0})),
-				query('.locale', style({opacity: 0, transform: 'translateX(100px)'})),
+				query('.locale', style({opacity: 0, transform: 'translateX(10px)'})),
 				query('.menu-item', stagger(300, [
-					style({transform: 'translateY(100px)' }),
-					animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))
+					style({transform: 'translateY(10px)' }),
+					animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))
 				])),
-				query('.locale', animate('.6s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 1, transform: 'translateX(0px)'})))
+				query('.locale', animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 1, transform: 'translateX(0px)'})))
 			]),
 			transition(':leave', [
 				query('.menu-item', stagger(300, [
 					style({transform: 'translateY(0px)', opacity: 1 }),
-					animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 0}))
+					animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 0}))
 				])),
-				query('.locale', animate('.6s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0})))
+				query('.locale', animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0})))
 			])
+		]),
+		trigger('stickyTransition', [
+			state('void', style({
+				opacity: '0'
+			})),
+			state('show', style({
+				opacity: '1'
+			})),
+			transition(':enter', [
+				animate('.3s')
+			]),
+			transition(':leave', [
+				animate('.3s')
+			]),
 		])
 	],
 })
@@ -67,21 +81,14 @@ export class HeaderComponent implements OnInit {
 			if(this.global.menuToggle){
 				this.global.menuToggle = false;
 			}
-			// If the menu is alive in showroom page.
-			// if(this.global.menuAlive){
-			// 	this.global.menuAlive = false;
-			// 	if(this.global.signalShowroom){
-			// 		this.global.colorToggle = false;
-			// 	}
-			// }else{
-			// 	this.global.menuAlive = true;
-			// }
 		}
 	}
 	onHome() {
 		if(!this.global.animProcessing){
+			this.global.headerSticky = false;
 			if(this.global.menuToggle){
 				this.global.menuToggle = false;
+				this.global.routerToggle = true;
 			}else{
 				this.global.bodyToggle = false;
 				this.global.routerToggle = true;
@@ -135,6 +142,11 @@ export class HeaderComponent implements OnInit {
 			if(!this.global.menuToggle){
 				this.global.bodyToggle = true;
 			}
+		}
+		if(this.global.routerToggle){
+			this.router.navigate(['/']);
+			this.global.menuToggle = false;
+			this.global.bodyToggle = true;
 		}
 	}
 }

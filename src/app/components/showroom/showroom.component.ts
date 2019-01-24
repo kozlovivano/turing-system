@@ -14,27 +14,27 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 			transition(':enter', [
 				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' })),
 				query('.item', style({ opacity: '0' }), { optional: true }),
-				query('.intro', animate('1s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))),
-				query('.item', stagger(600, [
-					style({ transform: 'translateY(100px)', opacity: '0' }),
-					animate('3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
+				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))),
+				query('.item', stagger(300, [
+					style({ transform: 'translateY(100px)', opacity: '1' }),
+					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
 				]), { optional: true }),
 			]),
 			transition(':leave', [
-				query('.intro', animate('1s ease-in', style({ opacity: '0' }))),
-				query('.item', stagger(600, [
+				query('.intro', animate('.3s ease-in', style({ opacity: '0' }))),
+				query('.item', stagger(300, [
 					style({ transform: 'translateY(0px)', opacity: '1' }),
-					animate('1s ease-in', style({ transform: 'translateY(0px)', opacity: '0' }))
+					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '0' }))
 				]), { optional: true }),
 			])
 		]),
 		trigger('showroomDetailTransition', [
 			transition(':enter', [
-				query('.markdown', style({ opacity: '0' }), { optional: true }),
-				query('.markdown', animate('1s ease-in', style({ opacity: '1' })), { optional: true })
+				query('p', style({ opacity: '0' }), { optional: true }),
+				query('p', animate('.3s ease-in', style({ opacity: '1' })), { optional: true })
 			]),
 			transition(':leave', [
-				query('.markdown', animate('1s ease-in', style({ opacity: '0' })), { optional: true })
+				query('p', animate('.3s ease-in', style({ opacity: '0' })), { optional: true })
 			])
 		]),
 	]

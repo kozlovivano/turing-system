@@ -18,7 +18,6 @@ export class GlobalService {
 	public menuAlive: Boolean = false;
 	public headerSticky: Boolean = false;
 	public localeWatch = new Subject<Boolean>();
-
 	public emitLocaleChange(val) {
 		this.localeWatch.next(val);
 	}

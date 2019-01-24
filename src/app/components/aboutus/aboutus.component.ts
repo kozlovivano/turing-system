@@ -10,13 +10,29 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 		trigger('aboutusTransition', [
 			transition(':enter', [
 				query('.circle', style({transform: 'scale(0.01)'})),
-				query('.content', style({transform: 'translateY(10px)', opacity: 0})),
-				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
-				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1})))
+				query('img', style({opacity: 0})),
+				query('.turing-system', style({opacity: 0, transform: 'translateX(-10px)'})),
+				query('.arsac-consulting', style({opacity: 0, transform: 'translateX(10px)'})),
+				query('.turing-svg .underLine', style({opacity: 0})),
+				query('.turing-svg .crossLine', style({opacity: 0})),
+				query('.arsac-svg .underLine', style({opacity: 0})),
+				query('.arsac-svg .crossLine', style({opacity: 0})),
+				query('.circle', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'scale(1)'}))),
+				query('img', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 1}))),
+				query('.turing-system', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'translateX(0px)', opacity: 1}))),
+				query('.turing-svg .underLine', animate('.3s ease-in', style({opacity: 0.5}))),
+				query('.turing-svg .crossLine', animate('.3s ease-in', style({opacity: 0.5}))),
+				query('.arsac-consulting', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'translateX(0px)', opacity: 1}))),
+				query('.arsac-svg .underLine', animate('.3s ease-in', style({opacity: 0.5}))),
+				query('.arsac-svg .crossLine', animate('.3s ease-in', style({opacity: 0.5})))
 			]),
 			transition(':leave', [
-				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
-				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
+				query('.arsac-svg', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0}))),
+				query('.arsac-consulting', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0}))),
+				query('.turing-svg', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0}))),
+				query('.turing-system', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0}))),
+				query('img', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0}))),
+				query('.circle', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'scale(0.01)'})))
 
 			])
 		])

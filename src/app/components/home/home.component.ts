@@ -14,13 +14,19 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 		trigger('homeTransition', [
 			transition(':enter', [
 				query('.circle', style({transform: 'scale(0.01)'})),
-				query('.content', style({transform: 'translateY(10px)', opacity: 0})),
+				query('h1', style({transform: 'translateX(-10px)', opacity: 0}), {optional: true}),
+				query('h3', style({transform: 'translateX(10px)', opacity: 0}), {optional: true}),
+				query('span', style({transform: 'translateY(-10px)', opacity: 0}), {optional: true}),
 				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
-				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1})))
+				query('h1', animate('.3s ease-in', style({transform: 'translateX(0px)', opacity: 1})), {optional: true}),
+				query('h3', animate('.3s ease-in', style({transform: 'translateX(0px)', opacity: 1})), {optional: true}),
+				query('span', animate('.3s ease-in', style({transform: 'translateY(0px)', opacity: 1})), {optional: true}),
 			]),
 			transition(':leave', [
-				query('.content', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
-				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
+				query('span', animate('.3s ease-in', style({opacity: 0})), {optional: true}),
+				query('h3', animate('.3s ease-in', style({opacity: 0})), {optional: true}),
+				query('h1', animate('.3s ease-in', style({opacity: 0})), {optional: true}),
+				query('.circle', animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
 
 			])
 		])

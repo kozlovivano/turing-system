@@ -1,4 +1,4 @@
-<div *ngIf="global.headerToggle" class="header" [class.sticky]="global.headerSticky">
+<div *ngIf="global.headerToggle" class="header" [class.sticky]="global.headerSticky" [@stickyTransition]>
     <mat-toolbar>
         <mat-toolbar-row>
             <div class="logo main-color" (click)="onHome()">
