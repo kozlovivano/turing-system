@@ -6,7 +6,8 @@
             </div>
             <span class="spacer"></span>
             <button mat-icon-button (click)="onMenuClick()">
-                <mat-icon [class.white]="!global.colorToggle" aria-label="Menu button in mobile mode">menu</mat-icon>
+                <mat-icon *ngIf="!global.animProcessing" [class.white]="!global.colorToggle" aria-label="Menu button in mobile mode">menu</mat-icon>
+                <img *ngIf="global.animProcessing" src="/assets/svg/loading.svg" alt="While loading, you can't click here" width="30" height="30">
             </button>
         </mat-toolbar-row>
     </mat-toolbar>

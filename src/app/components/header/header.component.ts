@@ -18,16 +18,16 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes, s
 				query('.locale', style({opacity: 0, transform: 'translateX(10px)'})),
 				query('.menu-item', stagger(300, [
 					style({transform: 'translateY(10px)' }),
-					animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))
+					animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))
 				])),
-				query('.locale', animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 1, transform: 'translateX(0px)'})))
+				query('.locale', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 1, transform: 'translateX(0px)'})))
 			]),
 			transition(':leave', [
 				query('.menu-item', stagger(300, [
 					style({transform: 'translateY(0px)', opacity: 1 }),
-					animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 0}))
+					animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(10px)', opacity: 0}))
 				])),
-				query('.locale', animate('.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0})))
+				query('.locale', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0})))
 			])
 		]),
 		trigger('stickyTransition', [
