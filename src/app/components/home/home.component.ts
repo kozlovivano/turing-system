@@ -17,7 +17,7 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 				query('h1', style({transform: 'translateX(-10px)', opacity: 0}), {optional: true}),
 				query('h3', style({transform: 'translateX(10px)', opacity: 0}), {optional: true}),
 				query('span', style({transform: 'translateY(-10px)', opacity: 0}), {optional: true}),
-				query('.circle', animate('1s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
+				query('.circle', animate('0.3s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
 				query('h1', animate('.3s ease-in', style({transform: 'translateX(0px)', opacity: 1})), {optional: true}),
 				query('h3', animate('.3s ease-in', style({transform: 'translateX(0px)', opacity: 1})), {optional: true}),
 				query('span', animate('.3s ease-in', style({transform: 'translateY(0px)', opacity: 1})), {optional: true}),
