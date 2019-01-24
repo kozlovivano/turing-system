@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 export class GlobalService {
 
 	public animProcessing: Boolean = false; // Disables all the click events while animation
-
+	public bigDevice: Boolean = false; // If the width is bigger than 768
 	public headerToggle: Boolean = true; // For 404 page
 	public menuToggle: Boolean = false;  // For menu toggle
 	public bodyToggle: Boolean = true;  // For body toggle

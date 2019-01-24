@@ -1,87 +1,183 @@
-.wrapper
-    position: relative
-.content
-    width: 300px
-    position: absolute
-    left: 50%
-    top: 50%
-    margin-top: -165px
-    h2
-        font-size: 24px
-        font-weight: 400
-        letter-spacing: 0
-        line-height: 1.3
-        margin: 0
-
-    span
-        font-size: 11px
-        font-weight: 400
-        letter-spacing: 0
-        line-height: 1.3
-
-    .turing-system
+@media(max-width: 768px)
+    .wrapper
+        position: relative
+    .content
+        width: 300px
         position: absolute
-        left: -30px
-        top: 40px
-        z-index: 3
+        left: 50%
+        top: 50%
+        margin-top: -165px
+        h2
+            font-size: 24px
+            font-weight: 400
+            letter-spacing: 0
+            line-height: 1.3
+            margin: 0
 
-    .arsac-consulting
-        position: absolute
-        left: 20px
-        top: 300px
-        z-index: 3
-    img
+        span
+            font-size: 11px
+            font-weight: 400
+            letter-spacing: 0
+            line-height: 1.3
+
+        .turing-system
+            position: absolute
+            left: -30px
+            top: 40px
+            z-index: 3
+
+        .arsac-consulting
+            position: absolute
+            left: 20px
+            top: 300px
+            z-index: 3
+        img
+            border-radius: 50%
+            position: absolute
+            top: 10px
+            left: -10px
+            z-index: 0
+
+    .circle-content
+        min-height: 596px
+        overflow-x: hidden
+        position: relative
+    .circle
         border-radius: 50%
+    ._purple
+        background-color: #AB10CC
+        width: 596px
+        padding-top: 596px
         position: absolute
-        top: 10px
-        left: -10px
-        z-index: 0
+        left: 50%
+        top: 50%
+        margin-left: -298px
+        margin-top: -298px
 
-.circle-content
-    min-height: 596px
-    overflow-x: hidden
-    position: relative
-.circle
-    border-radius: 50%
-._purple
-    background-color: #AB10CC
-    width: 596px
-    padding-top: 596px
-    position: absolute
-    left: 50%
-    top: 50%
-    margin-left: -298px
-    margin-top: -298px
+    ._yellow
+        background-color: #FFE56E
+        width: 526px
+        padding-top: 526px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-left: -263px
+        margin-top: -263px
+    ._white
+        background-color: #FFFFFF
+        width: 459px
+        padding-top: 459px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-left: -229.5px
+        margin-top: -229.5px
 
-._yellow
-    background-color: #FFE56E
-    width: 526px
-    padding-top: 526px
-    position: absolute
-    left: 50%
-    top: 50%
-    margin-left: -263px
-    margin-top: -263px
-._white
-    background-color: #FFFFFF
-    width: 459px
-    padding-top: 459px
-    position: absolute
-    left: 50%
-    top: 50%
-    margin-left: -229.5px
-    margin-top: -229.5px
+    svg
+        position: absolute
+        z-index: 2
+        background: transparent
+    line
+        stroke-width: 2px
+        opacity: 1
+        stroke: rgb(0,0,0)
+    .turing-svg
+        left: -40px
+    .arsac-svg
+        left: 10px
+        top: 230px
+@media(min-width: 769px)
+    .wrapper
+        position: relative
+        margin-top: -225px
+    .content
+        width: 600px
+        height: 600px
+        overflow-y: hidden
+        position: absolute
+        left: 35%
+        top: 41%
+        margin-top: -165px
+        h2
+            font-size: 32px
+            font-weight: 400
+            letter-spacing: 0
+            line-height: 1.7
+            margin: 0
 
-svg
-    position: absolute
-    z-index: 2
-    background: transparent
-line
-    stroke-width: 2px
-    opacity: 1
-    stroke: rgb(0,0,0)
-.turing-svg
-    left: -40px
-.arsac-svg
-    left: 10px
-    top: 230px
+        span
+            font-size: 15px
+            font-weight: 400
+            letter-spacing: 0
+            line-height: 1.7
+
+        .turing-system
+            position: absolute
+            left: 50px
+            top: 40px
+            z-index: 3
+
+        .arsac-consulting
+            position: absolute
+            left: 130px
+            top: 520px
+            z-index: 3
+        img
+            border-radius: 50%
+            position: absolute
+            top: 20px
+            left: 100px
+            z-index: 0
+            width: 500px
+            height: 500px
+    .circle-content
+        min-height: 1010px
+        overflow-x: hidden
+        position: relative
+    .circle
+        border-radius: 50%
+    ._purple
+        background-color: #AB10CC
+        width: 1010px
+        padding-top: 1010px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-left: -505px
+        margin-top: -505px
+
+    ._yellow
+        background-color: #FFE56E
+        width: 918px
+        padding-top: 918px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-left: -459px
+        margin-top: -459px
+    ._white
+        background-color: #FFFFFF
+        width: 844px
+        padding-top: 844px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-left: -422px
+        margin-top: -422px
+    svg
+        position: absolute
+        z-index: 2
+        background: transparent
+    line
+        stroke-width: 2px
+        opacity: 1
+        stroke: rgb(0,0,0)
+    .turing-svg
+        left: 40px
+        top: 17px
+        width: 400px
+        height: 300px
+    .arsac-svg
+        left: 119px
+        top: 300px
+        height: 300px
