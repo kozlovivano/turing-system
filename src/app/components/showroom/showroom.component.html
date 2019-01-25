@@ -1,17 +1,46 @@
-<div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()" (@showroomTransition.start)="global.animStart()">
-    <div class="intro">
-        <h1>{{title}}</h1>
-        <p>{{text}}</p>
+<div *ngIf="!global.bigDevice">
+    <div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()" (@showroomTransition.start)="global.animStart()">
+        <div class="intro">
+            <h1>{{title}}</h1>
+            <p>{{text}}</p>
+        </div>
+        <div class="item" *ngFor="let item of showroomData" >
+            <a routerLink="{{ item.url }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
+            <a routerLink="{{ item.url }}" class="black">
+                <h2 class="caption">
+                    {{ item.title }}
+                </h2>
+            </a>
+        </div>
     </div>
-    <div class="item" *ngFor="let item of showroomData" >
-        <a routerLink="{{ item.url }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
-        <a routerLink="{{ item.url }}" class="black">
-            <h2 class="caption">
-                {{ item.title }}
-            </h2>
-        </a>
+    <div *ngIf="showDetail && global.bodyToggle" class="markdown" [@showroomDetailTransition] (@showroomDetailTransition.done)="animDone()" (@showroomDetailTransition.start)="global.animStart()">
+        <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
     </div>
 </div>
-<div *ngIf="showDetail && global.bodyToggle" class="markdown" [@showroomDetailTransition] (@showroomDetailTransition.done)="animDone()" (@showroomDetailTransition.start)="global.animStart()">
-    <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
+<div *ngIf="global.bigDevice && global.bodyToggle" [@showroomBigTransition] (@showroomBigTransition.done)="animDone()" (@showroomBigTransition.start)="global.animStart()">
+    <div class="rect-content" *ngIf="!showDetail">
+        <div class="rect-yellow"></div>
+        <div class="rect-blue-left"></div>
+        <div class="rect-blue-right"></div>
+        <div class="rect-purple"></div>
+    </div>
+    <div class="showroom-big" *ngIf="!showDetail && global.bodyToggle">
+        <div class="intro">
+            <h1>{{title}}</h1>
+            <p>{{text}}</p>
+        </div>
+        <div class="showroom-item">
+            <div class="item" *ngFor="let item of showroomData" >
+                <a routerLink="{{ item.url }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
+                <a routerLink="{{ item.url }}" class="black">
+                    <h2 class="caption">
+                        {{ item.title }}
+                    </h2>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showDetail && global.bodyToggle" class="markdown-big">
+        <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
+    </div>
 </div>

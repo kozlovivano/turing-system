@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit {
 	constructor(
 		public global: GlobalService,
 		private http: HttpService,
-		public locale: LocaleService
+		public locale: LocaleService,
+		public router: Router
 	) {
 		this.global.localeWatch.subscribe(value => {
 			this.homeData = [];
@@ -66,6 +67,7 @@ export class HomeComponent implements OnInit {
 		}
 	}
 	animDone(){
+
 		this.global.animProcessing = false;
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
@@ -74,6 +76,11 @@ export class HomeComponent implements OnInit {
 			this.global.routerToggle = false;
 			this.global.bodyToggle = true;
 			this.global.menuToggle = false;
+		}
+		if(this.global.link != ""){
+			this.router.navigate([this.global.link.toLowerCase().replace(/ /g,'')]);
+			this.global.link = "";
+			this.global.bodyToggle = true;
 		}
 	}
 }

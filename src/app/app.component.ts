@@ -10,4 +10,5 @@ export class AppComponent {
 		public global: GlobalService
 	) { }
 	title = 'turing-system';
+	
 }

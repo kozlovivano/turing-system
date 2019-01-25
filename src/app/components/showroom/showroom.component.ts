@@ -16,7 +16,7 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 				query('.item', style({ opacity: '0' }), { optional: true }),
 				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))),
 				query('.item', stagger(300, [
-					style({ transform: 'translateY(100px)', opacity: '1' }),
+					style({ transform: 'translateY(10px)', opacity: '1' }),
 					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
 				]), { optional: true }),
 			]),
@@ -35,6 +35,37 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 			]),
 			transition(':leave', [
 				query('p', animate('.3s ease-in', style({ opacity: '0' })), { optional: true })
+			])
+		]),
+		trigger('showroomBigTransition', [
+			transition(':enter', [
+				query('.rect-blue-right', style({transform: 'rotate(20deg)', opacity: '0' }), { optional: true }),
+				query('.rect-yellow', style({transform: 'rotate(-22deg)', opacity: '0' }), { optional: true }),
+				query('.rect-blue-left', style({ transform: 'rotate(20deg)', opacity: '0' }), { optional: true }),
+				query('.rect-purple', style({ transform: 'rotate(-22deg)', opacity: '0' }), { optional: true }),
+
+				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' }), { optional: true }),
+				query('.item', style({ opacity: '0' }), { optional: true }),
+				query('.markdown-big', style({ opacity: '0' }), { optional: true }),
+				query('.rect-blue-right', animate('.3s ease-in', style({transform: 'rotate(20deg)', opacity: '1' })), { optional: true }),
+				query('.rect-yellow', animate('.3s ease-in', style({transform: 'rotate(-22deg)', opacity: '1' })), { optional: true }),
+				query('.rect-blue-left', animate('.3s ease-in', style({transform: 'rotate(20deg)', opacity: '1' })), { optional: true }),
+				query('.rect-purple', animate('.3s ease-in', style({transform: 'rotate(-22deg)', opacity: '1' })), { optional: true }),
+				query('.markdown-big', animate('.3s ease-in', style({ opacity: '1' })), { optional: true }),
+				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.item', stagger(300, [
+					style({ transform: 'translateX(10px)', opacity: '1' }),
+					animate('0.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))
+				]), { optional: true }),
+			]),
+			transition(':leave', [
+				query('.intro', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
+				query('.markdown-big', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
+				query('.item', stagger(300, [
+					style({ transform: 'translateX(0px)', opacity: '1' }),
+					animate('0.3s ease-in', style({ transform: 'translateX(-10px)', opacity: '0' }))
+				]), { optional: true }),
+				query('.rect-content', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
 			])
 		]),
 	]
@@ -70,7 +101,6 @@ export class ShowroomComponent implements OnInit {
 		} else {
 			this.global.colorToggle = true;
 		}
-
 		// Set menu deactive.
 		this.global.menuAlive = false;
 		// Set showroom visit true.
@@ -82,6 +112,9 @@ export class ShowroomComponent implements OnInit {
 		});
 		// Check whether detail view.
 		this.showDetail = (this.showroomDetail != undefined) ? true : false;
+		if(this.showDetail && this.global.bigDevice){
+			this.global.signalShowroomDetail = true;
+		}
 	}
 	getShowroomData() {
 		return this.http.getShowroomData().subscribe(
@@ -103,6 +136,11 @@ export class ShowroomComponent implements OnInit {
 		if (this.global.routerToggle) {
 			this.router.navigate(['/']);
 			this.global.menuToggle = false;
+			this.global.bodyToggle = true;
+		}
+		if(this.global.link != ""){
+			this.router.navigate([this.global.link.toLowerCase().replace(/ /g,'')]);
+			this.global.link = "";
 			this.global.bodyToggle = true;
 		}
 	}

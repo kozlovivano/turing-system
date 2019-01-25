@@ -72,5 +72,10 @@ export class ContactComponent implements OnInit {
 			this.global.menuToggle = false;
 			this.global.bodyToggle = true;
 		}
+		if(this.global.link != ""){
+			this.router.navigate([this.global.link.toLowerCase().replace(/ /g,'')]);
+			this.global.link = "";
+			this.global.bodyToggle = true;
+		}
 	}
 }

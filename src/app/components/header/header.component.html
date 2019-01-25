@@ -1,5 +1,5 @@
-<div *ngIf="global.headerToggle" class="header" [class.sticky]="global.headerSticky" [@stickyTransition]>
-    <mat-toolbar>
+<div *ngIf="global.headerToggle && !global.bigDevice" class="header" [class.sticky]="global.headerSticky" [@stickyTransition]>
+    <mat-toolbar *ngIf="!global.bigDevice">
         <mat-toolbar-row>
             <div class="logo main-color" (click)="onHome()">
                 <img src="/assets/png/logo.png" alt="Turing machine" width="100" height="50">
@@ -12,7 +12,7 @@
         </mat-toolbar-row>
     </mat-toolbar>
 </div>
-<div class="menu" *ngIf="global.menuToggle" [@menuTransition] (@menuTransition.done)="animDone()" (@menuTransition.start)="global.animStart()">
+<div class="menu" *ngIf="global.menuToggle && !global.bigDevice" [@menuTransition] (@menuTransition.done)="animDone()" (@menuTransition.start)="global.animStart()">
     <div class="menu-item" matRipple (click)="onMenu(menuData[0])">
         <h2 [class.white]="!global.colorToggle">{{ menuData[0] }}</h2>
     </div>
@@ -26,4 +26,21 @@
         <span [class.white]="!global.colorToggle">{{ menuData[3] }}</span>
         <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
     </div>
+</div>
+
+<div *ngIf="global.bigDevice" class="navLogo">
+    <div class="logo main-color" (click)="onHome()">
+        <img src="/assets/png/logo.png" alt="Turing machine" width="100" height="50">
+    </div>
+</div>
+<div *ngIf="global.bigDevice" class="navMenu">
+    <ul [class.black]="global.signalShowroomDetail">
+        <li matRipple (click)="onNavMenu(menuData[0])">{{ menuData[0] }}</li>
+        <li matRipple (click)="onNavMenu(menuData[1])">{{ menuData[1] }}</li>
+        <li matRipple (click)="onNavMenu(menuData[2])">{{ menuData[2] }}</li>
+    </ul>
+</div>
+<div *ngIf="global.bigDevice" class="navLocale">
+    <span [class.white]="!global.signalShowroomDetail">{{ menuData[3] }}</span>
+    <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
 </div>

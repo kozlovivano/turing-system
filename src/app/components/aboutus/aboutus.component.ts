@@ -20,11 +20,11 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 				query('.circle', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'scale(1)'}))),
 				query('img', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 1}))),
 				query('.turing-system', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'translateX(0px)', opacity: 1}))),
-				query('.turing-svg .underLine', animate('.3s ease-in', style({opacity: 1})), {optional: true}),
-				query('.turing-svg .crossLine', animate('.3s ease-in', style({opacity: 1})), {optional: true}),
+				query('.turing-svg .underLine', animate('.15s ease-in', style({opacity: 1})), {optional: true}),
+				query('.turing-svg .crossLine', animate('.15s ease-in', style({opacity: 1})), {optional: true}),
 				query('.arsac-consulting', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({transform: 'translateX(0px)', opacity: 1}))),
-				query('.arsac-svg .underLine', animate('.3s ease-in', style({opacity: 1})), {optional: true}),
-				query('.arsac-svg .crossLine', animate('.3s ease-in', style({opacity: 1})), {optional: true})
+				query('.arsac-svg .underLine', animate('.15s ease-in', style({opacity: 1})), {optional: true}),
+				query('.arsac-svg .crossLine', animate('.15s ease-in', style({opacity: 1})), {optional: true})
 			]),
 			transition(':leave', [
 				query('.arsac-svg', animate('.3s cubic-bezier(0.39, 0.575, 0.565, 1)', style({opacity: 0})), {optional: true}),
@@ -52,11 +52,6 @@ export class AboutusComponent implements OnInit {
 		this.global.headerToggle = true;
 		this.global.signalShowroom = false;
 		this.global.menuAlive = false;
-		if(window.innerWidth > 768){
-			this.global.bigDevice = true;
-		}else{
-			this.global.bigDevice = false;
-		}
 	}
 
 	animDone(){
@@ -74,6 +69,11 @@ export class AboutusComponent implements OnInit {
 				this.global.menuToggle = false;
 				this.global.bodyToggle = true;
 			}
+		}
+		if(this.global.link != ""){
+			this.router.navigate([this.global.link.toLowerCase().replace(/ /g,'')]);
+			this.global.link = "";
+			this.global.bodyToggle = true;
 		}
 	}
 	onNavigate(link){

@@ -69,6 +69,11 @@ export class HeaderComponent implements OnInit {
 		this.getMenuData();
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
 		this.global.colorToggle = false;
+		if(window.innerWidth > 768){
+			this.global.bigDevice = true;
+		}else{
+			this.global.bigDevice = false;
+		}
 	}
 
 	onMenuClick() {
@@ -85,10 +90,16 @@ export class HeaderComponent implements OnInit {
 	}
 	onHome() {
 		if(!this.global.animProcessing){
+			this.global.signalShowroomDetail = false;
 			this.global.headerSticky = false;
-			if(this.global.menuToggle){
-				this.global.menuToggle = false;
-				this.global.routerToggle = true;
+			if(!this.global.bigDevice){
+				if(this.global.menuToggle){
+					this.global.menuToggle = false;
+					this.global.routerToggle = true;
+				}else{
+					this.global.bodyToggle = false;
+					this.global.routerToggle = true;
+				}
 			}else{
 				this.global.bodyToggle = false;
 				this.global.routerToggle = true;
@@ -119,10 +130,20 @@ export class HeaderComponent implements OnInit {
 			}
 		}
 	}
-
+	onNavMenu(link){
+		if(!this.global.animProcessing){
+			if(!(this.global.signalShowroom && link == "Showroom" && !this.global.signalShowroomDetail)){
+				this.global.signalShowroomDetail = false;
+				this.global.link = link;
+				this.global.bodyToggle = false;
+			}
+		}
+	}
 	localeChange(lc){
 		if(!this.global.animProcessing){
-			this.global.menuAlive = true;
+			if(!this.global.bigDevice){
+				this.global.menuAlive = true;
+			}
 			this.locale.locale = lc;
 			this.cookieService.set("turing-system-locale", lc);
 			this.global.emitLocaleChange(true);

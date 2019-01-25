@@ -15,9 +15,11 @@ export class GlobalService {
 	public url: string = "http://cdn.dev.turing-system.com/turing-system/";
 	public cookieSet: Boolean = false;
 	public signalShowroom: Boolean = false;
+	public signalShowroomDetail: Boolean = false;
 	public menuAlive: Boolean = false;
 	public headerSticky: Boolean = false;
 	public localeWatch = new Subject<Boolean>();
+	public link: string = ""; // Menu navigation link
 	public emitLocaleChange(val) {
 		this.localeWatch.next(val);
 	}
