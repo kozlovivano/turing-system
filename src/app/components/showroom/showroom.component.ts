@@ -39,18 +39,18 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 		]),
 		trigger('showroomBigTransition', [
 			transition(':enter', [
-				query('.rect-blue-right', style({transform: 'rotate(20deg)', opacity: '0' }), { optional: true }),
-				query('.rect-yellow', style({transform: 'rotate(-22deg)', opacity: '0' }), { optional: true }),
-				query('.rect-blue-left', style({ transform: 'rotate(20deg)', opacity: '0' }), { optional: true }),
-				query('.rect-purple', style({ transform: 'rotate(-22deg)', opacity: '0' }), { optional: true }),
+				query('.rect-blue-right', style({transform: 'rotate(20deg) translateX(20px)', opacity: '0' }), { optional: true }),
+				query('.rect-yellow', style({transform: 'rotate(-22deg) translateX(-20px)', opacity: '0' }), { optional: true }),
+				query('.rect-blue-left', style({ transform: 'rotate(20deg) translateX(-20px)', opacity: '0' }), { optional: true }),
+				query('.rect-purple', style({ transform: 'rotate(-22deg) translateX(20px)', opacity: '0' }), { optional: true }),
 
 				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' }), { optional: true }),
 				query('.item', style({ opacity: '0' }), { optional: true }),
 				query('.markdown-big', style({ opacity: '0' }), { optional: true }),
-				query('.rect-blue-right', animate('.3s ease-in', style({transform: 'rotate(20deg)', opacity: '1' })), { optional: true }),
-				query('.rect-yellow', animate('.3s ease-in', style({transform: 'rotate(-22deg)', opacity: '1' })), { optional: true }),
-				query('.rect-blue-left', animate('.3s ease-in', style({transform: 'rotate(20deg)', opacity: '1' })), { optional: true }),
-				query('.rect-purple', animate('.3s ease-in', style({transform: 'rotate(-22deg)', opacity: '1' })), { optional: true }),
+				query('.rect-blue-right', animate('.3s ease-in', style({transform: 'rotate(20deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-yellow', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-blue-left', animate('.3s ease-in', style({transform: 'rotate(20deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-purple', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
 				query('.markdown-big', animate('.3s ease-in', style({ opacity: '1' })), { optional: true }),
 				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' })), { optional: true }),
 				query('.item', stagger(300, [

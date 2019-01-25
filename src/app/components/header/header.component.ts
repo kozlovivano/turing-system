@@ -67,9 +67,12 @@ export class HeaderComponent implements OnInit {
 	}
 	ngOnInit() {
 		this.getMenuData();
+		if(this.cookieService.get("turing-system-locale") != ""){
+			this.locale.locale = this.cookieService.get("turing-system-locale");
+		}
 		this.lc = (this.locale.locale == 'en') ? 'fr' : 'en';
 		this.global.colorToggle = false;
-		if(window.innerWidth > 768){
+		if(window.innerWidth > 1120){
 			this.global.bigDevice = true;
 		}else{
 			this.global.bigDevice = false;
