@@ -5,7 +5,9 @@ import { LocaleService } from '../../services/locale.service';
 import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
-
+/**
+ * The home component
+ */
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
