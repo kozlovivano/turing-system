@@ -43,6 +43,31 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes, s
 			transition(':leave', [
 				animate('.3s')
 			]),
+		]),
+		trigger('sideMenuTransition', [
+			transition(':enter', [
+				query('li', style({opacity: 0, transform: 'translateX(10px)'})),
+				query('li', stagger(100, [
+					style({transform: 'translateX(10px)', opacity: 0}),
+					animate('.3s 1s ease-in', style({transform: 'translateX(0px)', opacity: 1}))
+				]))
+			]),
+			transition(':leave', [
+				query('li', stagger(100, [
+					style({transform: 'translateX(0px)'}),
+					animate('.3s ease-in', style({transform: 'translateX(10px)', opacity: 0}))
+				]))
+			])
+		]),
+		trigger('sideLocaleTransition', [
+			transition(':enter', [
+				query('.sideLocale', style({opacity: 0, transform: 'translateX(10px)'})),
+				query('.sideLocale', animate('.3s 1s ease-in', style({opacity: 1, transform: 'translateX(0px)'}))),
+			]),
+			transition(':leave', [
+				query('.sideLocale', animate('.3s ease-in', style({opacity: 0, transform: 'translateX(10px)'}))),
+
+			])
 		])
 	],
 })
@@ -66,7 +91,6 @@ export class HeaderComponent implements OnInit {
 		})
 	}
 	ngOnInit() {
-		this.getMenuData();
 		if(this.cookieService.get("turing-system-locale") != ""){
 			this.locale.locale = this.cookieService.get("turing-system-locale");
 		}
@@ -77,6 +101,7 @@ export class HeaderComponent implements OnInit {
 		}else{
 			this.global.bigDevice = false;
 		}
+		this.getMenuData();
 	}
 
 	onMenuClick() {
@@ -135,7 +160,7 @@ export class HeaderComponent implements OnInit {
 	}
 	onNavMenu(link){
 		if(!this.global.animProcessing){
-			if(!(this.global.signalShowroom && link == "Showroom" && !this.global.signalShowroomDetail)){
+			if(!(this.global.signalShowroom && link == "showroom" && !this.global.signalShowroomDetail)){
 				this.global.signalShowroomDetail = false;
 				this.global.link = link;
 				this.global.bodyToggle = false;

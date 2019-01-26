@@ -13,13 +13,13 @@
     </mat-toolbar>
 </div>
 <div class="menu" *ngIf="global.menuToggle && !global.bigDevice" [@menuTransition] (@menuTransition.done)="animDone()" (@menuTransition.start)="global.animStart()">
-    <div class="menu-item" matRipple (click)="onMenu(menuData[0])">
+    <div class="menu-item" matRipple (click)="onMenu('showroom')">
         <h2 [class.white]="!global.colorToggle">{{ menuData[0] }}</h2>
     </div>
-    <div class="menu-item" matRipple (click)="onMenu(menuData[1])">
+    <div class="menu-item" matRipple (click)="onMenu('aboutus')">
         <h2 [class.white]="!global.colorToggle">{{ menuData[1] }}</h2>
     </div>
-    <div class="menu-item" matRipple (click)="onMenu(menuData[2])">
+    <div class="menu-item" matRipple (click)="onMenu('contact')">
         <h2 [class.white]="!global.colorToggle">{{ menuData[2] }}</h2>
     </div>
     <div class="locale">
@@ -33,14 +33,16 @@
         <img src="/assets/png/logo.png" alt="Turing machine" width="100" height="50">
     </div>
 </div>
-<div *ngIf="global.headerToggle && global.bigDevice" class="navMenu">
-    <ul [class.black]="global.signalShowroomDetail">
-        <li matRipple (click)="onNavMenu(menuData[0])">{{ menuData[0] }}</li>
-        <li matRipple (click)="onNavMenu(menuData[1])">{{ menuData[1] }}</li>
-        <li matRipple (click)="onNavMenu(menuData[2])">{{ menuData[2] }}</li>
+<div *ngIf="global.headerToggle && global.bigDevice && global.bodyToggle" class="navMenu" [@sideMenuTransition]>
+    <ul [class.black]="global.signalShowroomDetail" >
+        <li matRipple (click)="onNavMenu('showroom')">{{ menuData[0] }}</li>
+        <li matRipple (click)="onNavMenu('aboutus')">{{ menuData[1] }}</li>
+        <li matRipple (click)="onNavMenu('contact')">{{ menuData[2] }}</li>
     </ul>
 </div>
-<div *ngIf="global.headerToggle && global.bigDevice" class="navLocale">
-    <span [class.white]="!global.signalShowroomDetail">{{ menuData[3] }}</span>
-    <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
+<div *ngIf="global.headerToggle && global.bigDevice && global.bodyToggle" class="navLocale" [@sideLocaleTransition]>
+    <div class="sideLocale">
+        <span [class.white]="!global.signalShowroomDetail">{{ menuData[3] }}</span>
+        <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
+    </div>
 </div>
