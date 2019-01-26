@@ -6,7 +6,7 @@ import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
 /**
- * The home component
+ * The home component shows what we have
  */
 @Component({
 	selector: 'app-home',
