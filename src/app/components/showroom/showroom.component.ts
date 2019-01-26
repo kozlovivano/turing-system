@@ -114,6 +114,8 @@ export class ShowroomComponent implements OnInit {
 		this.showDetail = (this.showroomDetail != undefined) ? true : false;
 		if(this.showDetail && this.global.bigDevice){
 			this.global.signalShowroomDetail = true;
+		}else{
+			this.global.signalShowroomDetail = false;
 		}
 	}
 	getShowroomData() {
