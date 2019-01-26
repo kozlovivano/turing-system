@@ -127,6 +127,7 @@ export class ShowroomComponent implements OnInit {
 		this.title = data['title'];
 		this.text = data['explain-text'];
 		this.showroomData = data.items;
+		console.log(this.showroomData);
 	}
 
 	animDone() {
