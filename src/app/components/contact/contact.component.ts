@@ -4,6 +4,9 @@ import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
+/**
+ * The contact component shows how to contact us
+ */
 @Component({
 	selector: 'app-contact',
 	templateUrl: './contact.component.html',
@@ -50,18 +53,31 @@ export class ContactComponent implements OnInit {
 		this.global.signalShowroom = false;
 		this.global.menuAlive = false;
 	}
+
+	/**
+	 * @param {void} getContactData  Fetch the data from external sources
+	 * @returns callback setContactData
+	 */
     getContactData(){
 		return this.http.getContactData().subscribe(
 			data => this.setContactData(data)
 		);
 	}
 
+	/**
+	 * @param {json} setContactData  Sets the local variable
+	 * @returns void
+	 */
 	setContactData(data){
 		for(var i in data){
 			this.contactData.push(data[i]);
 		}
 	}
-
+	
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 		this.global.animProcessing = false;
 		if(!this.global.bodyToggle && !this.global.menuToggle){

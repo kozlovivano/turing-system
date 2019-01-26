@@ -56,18 +56,29 @@ export class HomeComponent implements OnInit {
 		this.getHomeData();
 		this.global.signalShowroom = false;
 	}
-
+	/**
+	 * @param {void} getHomeData  Fetch the data from external sources
+	 * @returns callback setHomeData
+	 */
 	getHomeData(){
 		return this.http.getHomeData().subscribe(
 			data => this.setHomeData(data)
 		);
 	}
-
+	/**
+	 * @param {json} setHomeData  Sets the local variable
+	 * @returns void
+	 */
 	setHomeData(data){
 		for(var i in data){
 			this.homeData.push(data[i]);
 		}
 	}
+
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 
 		this.global.animProcessing = false;

@@ -64,6 +64,13 @@
     <code>src/app/components/contact/contact.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The contact component shows how to contact us</p>
+
+    </p>
 
 
     <p class="comment">
@@ -188,7 +195,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/contact/contact.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/contact/contact.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -281,7 +288,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/contact/contact.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/components/contact/contact.component.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -289,10 +296,16 @@
                 <tr>
                     <td class="col-md-4">
 
+                            <div>
+                            </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    <p>void</p>
+
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -319,7 +332,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/contact/contact.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/contact/contact.component.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -327,10 +340,16 @@
                 <tr>
                     <td class="col-md-4">
 
+                            <div>
+                            </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    <p>callback setContactData</p>
+
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -357,7 +376,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/contact/contact.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/contact/contact.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -395,7 +414,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/contact/contact.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/contact/contact.component.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -432,7 +451,8 @@
 
                             </div>
                                 <div class="io-description">
-                                    
+                                    <p>void</p>
+
                                 </div>
                     </td>
                 </tr>
@@ -478,7 +498,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/contact/contact.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/contact/contact.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -513,7 +533,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/contact/contact.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/contact/contact.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -548,7 +568,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/contact/contact.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/contact/contact.component.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -567,6 +587,9 @@ import { HttpService } from &#x27;../../services/http.service&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from &#x27;@angular/animations&#x27;;
+/**
+ * The contact component shows how to contact us
+ */
 @Component({
 	selector: &#x27;app-contact&#x27;,
 	templateUrl: &#x27;./contact.component.html&#x27;,
@@ -613,18 +636,31 @@ export class ContactComponent implements OnInit {
 		this.global.signalShowroom &#x3D; false;
 		this.global.menuAlive &#x3D; false;
 	}
+
+	/**
+	 * @param {void} getContactData  Fetch the data from external sources
+	 * @returns callback setContactData
+	 */
     getContactData(){
 		return this.http.getContactData().subscribe(
 			data &#x3D;&gt; this.setContactData(data)
 		);
 	}
 
+	/**
+	 * @param {json} setContactData  Sets the local variable
+	 * @returns void
+	 */
 	setContactData(data){
 		for(var i in data){
 			this.contactData.push(data[i]);
 		}
 	}
-
+	
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 		this.global.animProcessing &#x3D; false;
 		if(!this.global.bodyToggle &amp;&amp; !this.global.menuToggle){

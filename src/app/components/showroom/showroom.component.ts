@@ -5,6 +5,9 @@ import { LocaleService } from '../../services/locale.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, stagger, animate, style, group, query, transition, keyframes } from '@angular/animations';
+/**
+ * The home component shows detailed information about our system
+ */
 @Component({
 	selector: 'app-showroom',
 	templateUrl: './showroom.component.html',
@@ -118,18 +121,31 @@ export class ShowroomComponent implements OnInit {
 			this.global.signalShowroomDetail = false;
 		}
 	}
+
+	/**
+	 * @param {void} getShowroomData  Fetch the data from external sources
+	 * @returns callback setShowroomData
+	 */
 	getShowroomData() {
 		return this.http.getShowroomData().subscribe(
 			data => this.setShowroomData(data)
 		);
 	}
+
+	/**
+	 * @param {json} setShowroomData  Sets the local variable
+	 * @returns void
+	 */
 	setShowroomData(data) {
 		this.title = data['title'];
 		this.text = data['explain-text'];
 		this.showroomData = data.items;
 		console.log(this.showroomData);
 	}
-
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone() {
 		this.global.animProcessing = false;
 		if (!this.global.bodyToggle && !this.global.menuToggle) {
@@ -149,14 +165,17 @@ export class ShowroomComponent implements OnInit {
 	}
 
 	@HostListener('window:scroll', ['$event'])
+
+	/**
+	 * @param {} checkScroll  check whether the sticky header to be seen or not
+	 * @returns void
+	 */
 	checkScroll() {
 		const scrollPosition = window.pageYOffset;
 		if(scrollPosition > 200){
 			this.global.headerSticky = true;
-			//this.global.colorToggle = false;
 		}else{
 			this.global.headerSticky = false;
-			//this.global.colorToggle = true;
 		}
 	}
 }

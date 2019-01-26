@@ -7,6 +7,9 @@ import { HttpService } from '../../services/http.service';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import {trigger, stagger, animate, style, group, query, transition, keyframes, state} from '@angular/animations';
+/**
+ * The header component shows logo and menu
+ */
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -103,7 +106,10 @@ export class HeaderComponent implements OnInit {
 		}
 		this.getMenuData();
 	}
-
+	/**
+	 * @param {void} onMenuClick  Sets the flags according to the action when the mobile menu icon is clicked
+	 * @returns void
+	 */
 	onMenuClick() {
 		if(!this.global.animProcessing){
 			// If the menu is going to be shown
@@ -116,6 +122,11 @@ export class HeaderComponent implements OnInit {
 			}
 		}
 	}
+
+	/**
+	 * @param {void} onMenuClick  Navigates to home and sets the flags
+	 * @returns void
+	 */
 	onHome() {
 		if(!this.global.animProcessing){
 			this.global.signalShowroomDetail = false;
@@ -134,18 +145,31 @@ export class HeaderComponent implements OnInit {
 			}
 		}
 	}
+
+	/**
+	 * @param {void} getMenuData  Fetch the data from external sources
+	 * @returns callback setMenuData
+	 */
 	getMenuData(){
 		return this.http.getMenuData().subscribe(
 			data => this.setMenuData(data)
 		);
 	}
 
+	/**
+	 * @param {json} setMenuData  Sets the local variable
+	 * @returns void
+	 */
 	setMenuData(data){
 		for(var i in data){
 			this.menuData.push(data[i]);
 		}
 	}
 
+	/**
+	 * @param {link} onMenu  Navigates to link when mobile menu is clicked
+	 * @returns void
+	 */
 	onMenu(link){
 		if(!this.global.animProcessing){
 			this.link = link;
@@ -158,6 +182,11 @@ export class HeaderComponent implements OnInit {
 			}
 		}
 	}
+
+	/**
+	 * @param {link} onNavMenu  Navigates to link when desktop menu is clicked
+	 * @returns void
+	 */
 	onNavMenu(link){
 		if(!this.global.animProcessing){
 			if(!(this.global.signalShowroom && link == "showroom" && !this.global.signalShowroomDetail)){
@@ -167,6 +196,11 @@ export class HeaderComponent implements OnInit {
 			}
 		}
 	}
+
+	/**
+	 * @param {lc} localeChange  Language change
+	 * @returns void
+	 */
 	localeChange(lc){
 		if(!this.global.animProcessing){
 			if(!this.global.bigDevice){
@@ -178,6 +212,10 @@ export class HeaderComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 		this.global.animProcessing = false;
 		if(!this.global.menuToggle && this.global.signalShowroom){

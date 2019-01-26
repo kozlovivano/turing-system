@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { Router } from '@angular/router';
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from '@angular/animations';
+/**
+ * The aboutus component shows aboutus
+ */
 @Component({
 	selector: 'app-aboutus',
 	templateUrl: './aboutus.component.html',
@@ -45,15 +48,26 @@ export class AboutusComponent implements OnInit {
 		private router: Router
 	) { }
 
+	/**
+	 * link: where to navigate
+	 */
 	link: string = "";
+
+	/**
+	 * detail: check whether detail uri
+	 */
 	detail: Boolean = false;
+
 	ngOnInit() {
 		this.global.colorToggle = false;
 		this.global.headerToggle = true;
 		this.global.signalShowroom = false;
 		this.global.menuAlive = false;
 	}
-
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 		this.global.animProcessing = false;
 		if(this.detail){
@@ -76,6 +90,11 @@ export class AboutusComponent implements OnInit {
 			this.global.bodyToggle = true;
 		}
 	}
+
+	/**
+	 * @param {link} onNavigate  Navigate to selected link
+	 * @returns void
+	 */
 	onNavigate(link){
 		if(!this.global.animProcessing){
 			this.link = link;

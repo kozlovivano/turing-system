@@ -64,6 +64,13 @@
     <code>src/app/components/aboutus/aboutus.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The aboutus component shows aboutus</p>
+
+    </p>
 
 
     <p class="comment">
@@ -183,7 +190,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -264,7 +271,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -272,10 +279,16 @@
                 <tr>
                     <td class="col-md-4">
 
+                            <div>
+                            </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    <p>void</p>
+
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -302,7 +315,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -340,7 +353,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:98</a></div>
                             </td>
                         </tr>
 
@@ -377,7 +390,8 @@
 
                             </div>
                                 <div class="io-description">
-                                    
+                                    <p>void</p>
+
                                 </div>
                     </td>
                 </tr>
@@ -422,10 +436,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:59</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>detail: check whether detail uri</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -457,7 +477,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -496,10 +516,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/aboutus/aboutus.component.ts:54</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>link: where to navigate</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -513,6 +539,9 @@
 import { GlobalService } from &#x27;../../services/global.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import {trigger, stagger, animate, style, group, query, transition, keyframes} from &#x27;@angular/animations&#x27;;
+/**
+ * The aboutus component shows aboutus
+ */
 @Component({
 	selector: &#x27;app-aboutus&#x27;,
 	templateUrl: &#x27;./aboutus.component.html&#x27;,
@@ -556,15 +585,26 @@ export class AboutusComponent implements OnInit {
 		private router: Router
 	) { }
 
+	/**
+	 * link: where to navigate
+	 */
 	link: string &#x3D; &quot;&quot;;
+
+	/**
+	 * detail: check whether detail uri
+	 */
 	detail: Boolean &#x3D; false;
+
 	ngOnInit() {
 		this.global.colorToggle &#x3D; false;
 		this.global.headerToggle &#x3D; true;
 		this.global.signalShowroom &#x3D; false;
 		this.global.menuAlive &#x3D; false;
 	}
-
+	/**
+	 * @param {void} animDone  Callback after animation finished
+	 * @returns void
+	 */
 	animDone(){
 		this.global.animProcessing &#x3D; false;
 		if(this.detail){
@@ -587,6 +627,11 @@ export class AboutusComponent implements OnInit {
 			this.global.bodyToggle &#x3D; true;
 		}
 	}
+
+	/**
+	 * @param {link} onNavigate  Navigate to selected link
+	 * @returns void
+	 */
 	onNavigate(link){
 		if(!this.global.animProcessing){
 			this.link &#x3D; link;

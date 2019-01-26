@@ -3,6 +3,9 @@ import { GlobalService } from '../../services/global.service';
 import { LocaleService } from '../../services/locale.service';
 import { CookieService } from 'ngx-cookie-service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+/**
+ * The cookie component asks cookie policy
+ */
 @Component({
 	selector: 'app-cookie',
 	templateUrl: './cookie.component.html',
