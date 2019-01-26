@@ -13,16 +13,16 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 		trigger('showroomTransition', [
 			transition(':enter', [
 				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' })),
-				query('.item', style({ opacity: '0' }), { optional: true }),
+				query('.showroom-item', style({ opacity: '0' }), { optional: true }),
 				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))),
-				query('.item', stagger(300, [
+				query('.showroom-item', stagger(300, [
 					style({ transform: 'translateY(10px)', opacity: '1' }),
 					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
 				]), { optional: true }),
 			]),
 			transition(':leave', [
 				query('.intro', animate('.3s ease-in', style({ opacity: '0' }))),
-				query('.item', stagger(300, [
+				query('.showroom-item', stagger(300, [
 					style({ transform: 'translateY(0px)', opacity: '1' }),
 					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '0' }))
 				]), { optional: true }),
@@ -45,7 +45,7 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 				query('.rect-purple', style({ transform: 'rotate(-22deg) translateX(20px)', opacity: '0' }), { optional: true }),
 
 				query('.intro', style({ transform: 'translateX(20px)', opacity: '0' }), { optional: true }),
-				query('.item', style({ opacity: '0' }), { optional: true }),
+				query('.showroom-item', style({ opacity: '0' }), { optional: true }),
 				query('.markdown-big', style({ opacity: '0' }), { optional: true }),
 				query('.rect-blue-right', animate('.3s ease-in', style({transform: 'rotate(20deg) translateX(0px)', opacity: '1' })), { optional: true }),
 				query('.rect-yellow', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
@@ -53,17 +53,17 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 				query('.rect-purple', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
 				query('.markdown-big', animate('.3s ease-in', style({ opacity: '1' })), { optional: true }),
 				query('.intro', animate('.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' })), { optional: true }),
-				query('.item', stagger(300, [
-					style({ transform: 'translateX(10px)', opacity: '1' }),
-					animate('0.3s ease-in', style({ transform: 'translateX(0px)', opacity: '1' }))
+				query('.showroom-item', stagger(300, [
+					style({ transform: 'translateY(10px)', opacity: '1' }),
+					animate('0.3s ease-in', style({ transform: 'translateY(0px)', opacity: '1' }))
 				]), { optional: true }),
 			]),
 			transition(':leave', [
 				query('.intro', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
 				query('.markdown-big', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
-				query('.item', stagger(300, [
+				query('.showroom-item', stagger(300, [
 					style({ transform: 'translateX(0px)', opacity: '1' }),
-					animate('0.3s ease-in', style({ transform: 'translateX(-10px)', opacity: '0' }))
+					animate('0.3s ease-in', style({ transform: 'translateY(-10px)', opacity: '0' }))
 				]), { optional: true }),
 				query('.rect-content', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
 			])
