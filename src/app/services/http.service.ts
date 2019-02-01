@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocaleService } from './locale.service';
 import { Observable } from 'rxjs';
+
+import { environment } from '../../environments/environment';
+
 @Injectable({
 	providedIn: 'root'
 })
 export class HttpService {
 
-	public url: string = "http://cdn.dev.turing-system.com/turing-system/";
+	public url: string = `http://${environment.cdn_domain}/turing-system/`;
 
 	constructor(
 		private http: HttpClient,

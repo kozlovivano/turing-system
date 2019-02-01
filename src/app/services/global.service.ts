@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+
+import { environment } from '../../environments/environment';
+
 @Injectable({
 	providedIn: 'root'
 })
@@ -12,7 +15,7 @@ export class GlobalService {
 	public bodyToggle: Boolean = true;  // For body toggle
 	public routerToggle: Boolean = false; // For router animation toggle.
 	public colorToggle: Boolean = false; // For showroom color toggle
-	public url: string = "http://cdn.dev.turing-system.com/turing-system/";
+	public url: string = `http://${environment.cdn_domain}/turing-system/`;
 	public cookieSet: Boolean = false;
 	public signalShowroom: Boolean = false;
 	public signalShowroomDetail: Boolean = false;
