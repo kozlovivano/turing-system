@@ -34,7 +34,7 @@
     </div>
 </div>
 <div *ngIf="global.headerToggle && global.bigDevice && global.bodyToggle" class="navMenu" [@sideMenuTransition]>
-    <ul [class.black]="global.signalShowroomDetail" >
+    <ul [class.black]="global.signalShowroomDetail" style="margin-top: 20px">
         <li matRipple (click)="onNavMenu('showroom')">{{ menuData[0] }}</li>
         <li matRipple (click)="onNavMenu('aboutus')">{{ menuData[1] }}</li>
         <li matRipple (click)="onNavMenu('contact')">{{ menuData[2] }}</li>

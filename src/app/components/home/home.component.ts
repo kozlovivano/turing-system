@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
 	 * @param {json} setHomeData  Sets the local variable
 	 * @returns void
 	 */
-	setHomeData(data){
+	setHomeData(data: { [x: string]: any; }){
 		for(var i in data){
 			this.homeData.push(data[i]);
 		}

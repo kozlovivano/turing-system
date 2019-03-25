@@ -20,12 +20,15 @@
                 <a href="tel:{{ contactData[5] }}" class="black"><p>{{ contactData[5] }}</p></a>
             </div>
             <br>
-            <div class="contact-detail">
+            <div class="contact-detail" style="position: relative">
                 <span class="icon">
                     <mat-icon>mail</mat-icon>
                 </span>
                 <h2>{{ contactData[6] }}</h2>
-                <a href="mailto:{{ contactData[7] }}" class="black"><p>{{ contactData[7] }}</p></a>
+                <a href="mailto:{{ contactData[7] }}" class="black">
+                    <p>{{ contactData[7] }}</p>
+                </a>
+                <button class="btn copy-button" (click)="copyCode()">{{ copymail }}</button>
             </div>
         </div>
     </div>

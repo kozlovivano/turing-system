@@ -75,9 +75,9 @@ import { trigger, stagger, animate, style, group, query, transition, keyframes }
 })
 export class ShowroomComponent implements OnInit {
 
-	public showroomData;
+	public showroomData: any[];
 	public sub;
-	public showroomDetail;
+	public showroomDetail: any;
 	public showDetail: Boolean = false;
 
 	public title: string;
@@ -136,11 +136,10 @@ export class ShowroomComponent implements OnInit {
 	 * @param {json} setShowroomData  Sets the local variable
 	 * @returns void
 	 */
-	setShowroomData(data) {
+	setShowroomData(data: { [x: string]: string; items: any; }) {
 		this.title = data['title'];
 		this.text = data['explain-text'];
 		this.showroomData = data.items;
-		console.log(this.showroomData);
 	}
 	/**
 	 * @param {void} animDone  Callback after animation finished

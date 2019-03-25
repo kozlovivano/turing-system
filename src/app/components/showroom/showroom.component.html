@@ -28,11 +28,11 @@
     </div>
     <div class="showroom-big" *ngIf="!showDetail && global.bodyToggle">
         <div class="intro">
-            <h1>{{title}}</h1>
+            <h1 style="font-size: 2em; margin: 21px 0px; font-weight: 700">{{title}}</h1>
             <p>{{text}}</p>
         </div>
         <div class="showroom-item row">
-            <div class="item col-6" *ngFor="let item of showroomData">
+            <div class="item col-6" *ngFor="let item of showroomData" style="z-index: -3">
                 <a href="{{ item.url }}" target="{{ item.target }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
                 <a href="{{ item.url }}" target="{{ item.target }}" class="black">
                     <h2 class="caption">

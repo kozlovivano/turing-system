@@ -35,7 +35,7 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 export class ContactComponent implements OnInit {
 
     public contactData = [];
-
+		public copymail: string = "Copy";
 	constructor(
 		public global: GlobalService,
 		private http: HttpService,
@@ -93,5 +93,18 @@ export class ContactComponent implements OnInit {
 			this.global.link = "";
 			this.global.bodyToggle = true;
 		}
+	}
+	copyCode(){
+		this.copymail = "Copied!";
+		setTimeout(() => {
+			this.copymail = "Copy";
+		}, 1500);
+		let el = document.createElement('textarea');
+		el.value = this.contactData[7];
+		el.setAttribute('readonly', '');
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
 	}
 }
