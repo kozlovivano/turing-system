@@ -18,6 +18,9 @@ import { TuringSystemComponent } from './components/aboutus/turing-system/turing
 import { ArsacConsultingComponent } from './components/aboutus/arsac-consulting/arsac-consulting.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CookieComponent } from './components/cookie/cookie.component';
+import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
+import { ReplaceURL } from './app.pipe';
+import { MarkdownComponent } from './components/markdown/markdown.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -29,7 +32,9 @@ import { CookieComponent } from './components/cookie/cookie.component';
 		ContactComponent,
 		TuringSystemComponent,
 		ArsacConsultingComponent,
-		CookieComponent
+		CookieComponent,
+		ReplaceURL,
+		MarkdownComponent
 	],
 	imports: [
 		BrowserModule,
@@ -38,6 +43,7 @@ import { CookieComponent } from './components/cookie/cookie.component';
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 		MaterialModule,
 		HttpClientModule,
+		MarkdownToHtmlModule,
 		MarkdownModule.forRoot({ loader: HttpClientModule }),
 	],
 	providers: [CookieService],

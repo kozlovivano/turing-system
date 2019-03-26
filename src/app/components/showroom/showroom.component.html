@@ -1,3 +1,4 @@
+
 <div *ngIf="!global.bigDevice">
     <div class="showroom" *ngIf="!showDetail && global.bodyToggle" [@showroomTransition] (@showroomTransition.done)="animDone()" (@showroomTransition.start)="global.animStart()">
         <div class="intro">
@@ -16,7 +17,8 @@
         </div>
     </div>
     <div *ngIf="showDetail && global.bodyToggle" class="markdown" [@showroomDetailTransition] (@showroomDetailTransition.done)="animDone()" (@showroomDetailTransition.start)="global.animStart()">
-        <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
+        <!-- <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p> -->
+        <app-markdown path="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></app-markdown>
     </div>
 </div>
 <div *ngIf="global.bigDevice && global.bodyToggle" [@showroomBigTransition] (@showroomBigTransition.done)="animDone()" (@showroomBigTransition.start)="global.animStart()">
@@ -32,7 +34,7 @@
             <p>{{text}}</p>
         </div>
         <div class="showroom-item row">
-            <div class="item col-6" *ngFor="let item of showroomData" style="z-index: -3">
+            <div class="item col-6" *ngFor="let item of showroomData">
                 <a href="{{ item.url }}" target="{{ item.target }}"><img id="{{ item.picture_attr.id }}" src="{{ item.picture_url }}" width="297" height="297" alt="{{ item.picture_attr.alt }}"></a>
                 <a href="{{ item.url }}" target="{{ item.target }}" class="black">
                     <h2 class="caption">
@@ -43,6 +45,7 @@
         </div>
     </div>
     <div *ngIf="showDetail && global.bodyToggle" class="markdown-big">
-        <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p>
+        <!-- <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p> -->
+        <app-markdown path="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></app-markdown>
     </div>
 </div>
