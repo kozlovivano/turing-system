@@ -22,7 +22,7 @@
     </div>
 </div>
 <div *ngIf="global.bigDevice && global.bodyToggle" [@showroomBigTransition] (@showroomBigTransition.done)="animDone()" (@showroomBigTransition.start)="global.animStart()">
-    <div class="rect-content" *ngIf="!showDetail">
+    <div class="rect-content">
         <div class="rect-yellow"></div>
         <div class="rect-blue-left"></div>
         <div class="rect-blue-right"></div>
@@ -46,6 +46,8 @@
     </div>
     <div *ngIf="showDetail && global.bodyToggle" class="markdown-big">
         <!-- <p markdown src="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></p> -->
-        <app-markdown path="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></app-markdown>
+        <div class="w-75" style="z-index: -100; position: relative; margin-left: 180px">
+            <app-markdown path="{{ global.url }}showroom/{{ locale.locale }}.{{ showroomDetail }}.md"></app-markdown>
+        </div>
     </div>
 </div>

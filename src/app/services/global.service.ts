@@ -18,6 +18,7 @@ export class GlobalService {
 	public url: string = `http://${environment.cdn_domain}/turing-system/`;
 	public cookieSet: Boolean = false;
 	public signalShowroom: Boolean = false;
+	public signalAboutus: Boolean = false;
 	public signalShowroomDetail: Boolean = false;
 	public menuAlive: Boolean = false;
 	public headerSticky: Boolean = false;

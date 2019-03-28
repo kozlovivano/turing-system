@@ -10,11 +10,9 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
     animations: [
 		trigger('arsacTransition', [
 			transition(':enter', [
-				query('.circle', style({transform: 'scale(0.01)'})),
 				query('.content h2', style({transform: 'translateY(-10px)', opacity: 0})),
 				query('.avatar', style({transform: 'translateY(10px)', opacity: 0})),
 				query('.markdown', style({transform: 'translateY(10px)', opacity: 0})),
-				query('.circle', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(1)'}))),
 				query('.content h2', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))),
 				query('.avatar', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))),
 				query('.markdown', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1})))
@@ -23,8 +21,33 @@ import {trigger, stagger, animate, style, group, query, transition, keyframes} f
 				query('.markdown', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
 				query('.avatar', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
 				query('.content h2', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
-				query('.circle', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'scale(0.01)'})))
 
+			])
+		]),
+		trigger('arsacBigTransition', [
+			transition(':enter', [
+				query('.rect-blue-right', style({transform: 'rotate(20deg) translateX(20px)', opacity: '0' }), { optional: true }),
+				query('.rect-yellow', style({transform: 'rotate(-22deg) translateX(-20px)', opacity: '0' }), { optional: true }),
+				query('.rect-blue-left', style({ transform: 'rotate(20deg) translateX(-20px)', opacity: '0' }), { optional: true }),
+				query('.rect-purple', style({ transform: 'rotate(-22deg) translateX(20px)', opacity: '0' }), { optional: true }),
+
+				query('.content h2', style({transform: 'translateY(-10px)', opacity: 0})),
+				query('.avatar', style({transform: 'translateY(10px)', opacity: 0})),
+				query('.markdown', style({transform: 'translateY(10px)', opacity: 0})),
+				query('.rect-blue-right', animate('.3s ease-in', style({transform: 'rotate(20deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-yellow', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-blue-left', animate('.3s ease-in', style({transform: 'rotate(20deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				query('.rect-purple', animate('.3s ease-in', style({transform: 'rotate(-22deg) translateX(0px)', opacity: '1' })), { optional: true }),
+				
+				query('.content h2', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))),
+				query('.avatar', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1}))),
+				query('.markdown', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({transform: 'translateY(0px)', opacity: 1})))
+			]),
+			transition(':leave', [
+				query('.markdown', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
+				query('.avatar', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
+				query('.content h2', animate('.15s cubic-bezier(0.075, 0.82, 0.165, 1)', style({opacity: 0}))),
+				query('.rect-content', animate('.3s ease-in', style({ opacity: '0' })), { optional: true }),
 			])
 		])
     ]
@@ -46,12 +69,23 @@ export class ArsacConsultingComponent implements OnInit {
 
 	ngOnInit() {
 		this.mdSrc = this.global.url + this.locale.locale + '.about-us.arsac-consulting.md';
+		// If menu is activated, the main color is blue, maintained. Otherwise, the showroom color, the white.
+		if (this.global.menuAlive) {
+			this.global.colorToggle = false;
+		} else {
+			this.global.colorToggle = true;
+		}
+		// Set menu deactive.
+		this.global.menuAlive = false;
+		// Set showroom visit true.
+		this.global.signalAboutus = true;
 	}
 
 	animDone(){
 		this.global.animProcessing = false;
 		if(!this.global.bodyToggle && !this.global.menuToggle){
 			this.global.menuToggle = true;
+			this.global.colorToggle = false;
 		}
 		if(this.global.routerToggle){
 			this.router.navigate(['/']);

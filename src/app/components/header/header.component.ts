@@ -80,6 +80,7 @@ export class HeaderComponent implements OnInit {
 	public menuData = [];
 	private link: string = "";
 	public lc: string;
+	public cl: Boolean;
 	constructor(
 		private router: Router,
 		public global: GlobalService,
@@ -105,6 +106,7 @@ export class HeaderComponent implements OnInit {
 			this.global.bigDevice = false;
 		}
 		this.getMenuData();
+		this.cl = this.global.colorToggle;
 	}
 	/**
 	 * @param {void} onMenuClick  Sets the flags according to the action when the mobile menu icon is clicked
@@ -170,13 +172,13 @@ export class HeaderComponent implements OnInit {
 	 * @param {link} onMenu  Navigates to link when mobile menu is clicked
 	 * @returns void
 	 */
-	onMenu(link){
+	onMenu(link: string){
 		if(!this.global.animProcessing){
 			this.link = link;
 			this.global.menuToggle = false;
 			if(this.global.menuAlive){
 				this.global.menuAlive = false;
-				if(this.global.signalShowroom){
+				if(this.global.signalShowroom || this.global.signalAboutus){
 					this.global.colorToggle = true;
 				}
 			}
@@ -187,7 +189,7 @@ export class HeaderComponent implements OnInit {
 	 * @param {link} onNavMenu  Navigates to link when desktop menu is clicked
 	 * @returns void
 	 */
-	onNavMenu(link){
+	onNavMenu(link: string){
 		if(!this.global.animProcessing){
 			if(!(this.global.signalShowroom && link == "showroom" && !this.global.signalShowroomDetail)){
 				this.global.signalShowroomDetail = false;
@@ -201,7 +203,7 @@ export class HeaderComponent implements OnInit {
 	 * @param {lc} localeChange  Language change
 	 * @returns void
 	 */
-	localeChange(lc){
+	localeChange(lc: string){
 		if(!this.global.animProcessing){
 			if(!this.global.bigDevice){
 				this.global.menuAlive = true;
@@ -218,7 +220,7 @@ export class HeaderComponent implements OnInit {
 	 */
 	animDone(){
 		this.global.animProcessing = false;
-		if(!this.global.menuToggle && this.global.signalShowroom){
+		if(!this.global.menuToggle && (this.global.signalShowroom || this.global.signalAboutus)){
 			this.global.colorToggle = true;
 		}
 		if(this.link != ""){

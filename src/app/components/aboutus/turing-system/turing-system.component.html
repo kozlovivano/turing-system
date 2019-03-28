@@ -1,8 +1,5 @@
-<div class="wrapper" *ngIf="global.bodyToggle" [@turingTransition] (@turingTransition.done)="animDone()" (@turingTransition.start)="global.animStart()">
-    <div class="circle-content">
-        <div class="circle _purple"></div>
-        <div class="circle _yellow"></div>
-        <div class="circle _white"></div>
+<div *ngIf="!global.bigDevice">
+    <div class="wrapper" *ngIf="global.bodyToggle" [@turingTransition] (@turingTransition.done)="animDone()" (@turingTransition.start)="global.animStart()">
         <div class="content">
             <div class="avatar">
                 <img src="https://storage.moqups.com/repo/xJzw4EJ2/XUCIE5v4Hx.jpg" width="141" height="131" align="right">
@@ -12,5 +9,22 @@
             <!-- <p markdown src="{{ mdSrc }}" class="markdown"></p> -->
             <app-markdown class="markdown" path="{{ mdSrc }}"></app-markdown>
         </div>
+    </div>
+</div>
+<div class="wrapper" *ngIf="global.bigDevice && global.bodyToggle" [@turingBigTransition] (@turingBigTransition.done)="animDone()" (@turingBigTransition.start)="global.animStart()">
+    <div class="rect-content">
+        <div class="rect-yellow"></div>
+        <div class="rect-blue-left"></div>
+        <div class="rect-blue-right"></div>
+        <div class="rect-purple"></div>
+    </div>
+    <div class="content">
+        <div class="avatar">
+            <img src="https://storage.moqups.com/repo/xJzw4EJ2/XUCIE5v4Hx.jpg" width="141" height="131" align="right">
+            <span>Alan Turing 1912-1954</span>
+        </div>
+        <h2>Turing System</h2>
+        <!-- <p markdown src="{{ mdSrc }}" class="markdown"></p> -->
+        <app-markdown class="markdown" path="{{ mdSrc }}"></app-markdown>
     </div>
 </div>

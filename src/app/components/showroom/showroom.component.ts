@@ -79,7 +79,6 @@ export class ShowroomComponent implements OnInit {
 	public sub;
 	public showroomDetail: any;
 	public showDetail: Boolean = false;
-
 	public title: string;
 	public text: string;
 	constructor(
@@ -98,7 +97,6 @@ export class ShowroomComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 		// If menu is activated, the main color is blue, maintained. Otherwise, the showroom color, the white.
 		if (this.global.menuAlive) {
 			this.global.colorToggle = false;

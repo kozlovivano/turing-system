@@ -1,8 +1,5 @@
-<div class="wrapper" *ngIf="global.bodyToggle" [@arsacTransition] (@arsacTransition.done)="animDone()" (@arsacTransition.start)="global.animStart()">
-    <div class="circle-content">
-        <div class="circle _purple"></div>
-        <div class="circle _yellow"></div>
-        <div class="circle _white"></div>
+<div *ngIf="!global.bigDevice">
+    <div class="wrapper" *ngIf="global.bodyToggle" [@arsacTransition] (@arsacTransition.done)="animDone()" (@arsacTransition.start)="global.animStart()">
         <div class="content">
             <div class="avatar">
                 <img src="https://storage.moqups.com/repo/xJzw4EJ2/k9dDAZ86Js.jpg" width="136" height="180" align="right">
@@ -12,5 +9,22 @@
             <!-- <p markdown src="{{ mdSrc }}" class="markdown"></p> -->
             <app-markdown class="markdown" path="{{ mdSrc }}"></app-markdown>
         </div>
+    </div>
+</div>
+<div class="wrapper" *ngIf="global.bigDevice && global.bodyToggle" [@arsacBigTransition] (@arsacBigTransition.done)="animDone()" (@arsacBigTransition.start)="global.animStart()">
+    <div class="rect-content">
+        <div class="rect-yellow"></div>
+        <div class="rect-blue-left"></div>
+        <div class="rect-blue-right"></div>
+        <div class="rect-purple"></div>
+    </div>
+    <div class="content">
+        <div class="avatar">
+            <img src="https://storage.moqups.com/repo/xJzw4EJ2/k9dDAZ86Js.jpg" width="136" height="180" align="right">
+            <span>Jaques Arsac 1929-2014</span>
+        </div>
+        <h2>Arsac Consulting</h2>
+        <!-- <p markdown src="{{ mdSrc }}" class="markdown"></p> -->
+        <app-markdown class="markdown" path="{{ mdSrc }}"></app-markdown>
     </div>
 </div>

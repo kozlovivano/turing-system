@@ -14,16 +14,16 @@
 </div>
 <div class="menu" *ngIf="global.menuToggle && !global.bigDevice" [@menuTransition] (@menuTransition.done)="animDone()" (@menuTransition.start)="global.animStart()">
     <div class="menu-item" matRipple (click)="onMenu('showroom')">
-        <h2 [class.white]="!global.colorToggle">{{ menuData[0] }}</h2>
+        <h2 style="color: white">{{ menuData[0] }}</h2>
     </div>
     <div class="menu-item" matRipple (click)="onMenu('aboutus')">
-        <h2 [class.white]="!global.colorToggle">{{ menuData[1] }}</h2>
+        <h2 style="color: white">{{ menuData[1] }}</h2>
     </div>
     <div class="menu-item" matRipple (click)="onMenu('contact')">
-        <h2 [class.white]="!global.colorToggle">{{ menuData[2] }}</h2>
+        <h2 style="color: white">{{ menuData[2] }}</h2>
     </div>
     <div class="locale">
-        <span [class.white]="!global.colorToggle">{{ menuData[3] }}</span>
+        <span style="color: white">{{ menuData[3] }}</span>
         <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
     </div>
 </div>
@@ -34,7 +34,7 @@
     </div>
 </div>
 <div *ngIf="global.headerToggle && global.bigDevice && global.bodyToggle" class="navMenu" [@sideMenuTransition]>
-    <ul [class.black]="global.signalShowroomDetail" style="margin-top: 20px">
+    <ul style="margin-top: 20px">
         <li matRipple (click)="onNavMenu('showroom')">{{ menuData[0] }}</li>
         <li matRipple (click)="onNavMenu('aboutus')">{{ menuData[1] }}</li>
         <li matRipple (click)="onNavMenu('contact')">{{ menuData[2] }}</li>
@@ -42,7 +42,7 @@
 </div>
 <div *ngIf="global.headerToggle && global.bigDevice && global.bodyToggle" class="navLocale" [@sideLocaleTransition]>
     <div class="sideLocale">
-        <span [class.white]="!global.signalShowroomDetail">{{ menuData[3] }}</span>
+        <span>{{ menuData[3] }}</span>
         <img src="/assets/svg/{{ lc }}.svg" alt="{{ menuData[3] }}" width="62" height="41" (click)="localeChange(lc)">
     </div>
 </div>
